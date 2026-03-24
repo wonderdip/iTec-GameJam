@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bs4jgbm1wcfoq"]
+[gd_scene load_steps=9 format=3 uid="uid://bs4jgbm1wcfoq"]
 
 [ext_resource type="FontFile" uid="uid://cyj0qvfs1qf4k" path="res://6px-Normal.ttf" id="1_0u8ip"]
 [ext_resource type="Texture2D" uid="uid://cex7khu0tjjov" path="res://Assets/window.png" id="1_caufo"]
 [ext_resource type="Texture2D" uid="uid://cj5wuw7ujkhpx" path="res://Assets/user.png" id="2_8gyig"]
 [ext_resource type="Texture2D" uid="uid://dp5425hj1fhu6" path="res://Assets/minimize.png" id="2_32048"]
 [ext_resource type="Texture2D" uid="uid://chtcg4dary02u" path="res://Assets/exit.png" id="2_d5id1"]
+[ext_resource type="Script" uid="uid://b1bbwlq5jo0r4" path="res://Scripts/exit_button.gd" id="6_i2ox6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d5id1"]
 texture = ExtResource("1_caufo")
@@ -55,15 +56,17 @@ offset_right = 141.0
 offset_bottom = 5.0
 theme_override_constants/separation = 1
 
-[node name="TextureButton2" type="TextureButton" parent="Panel/HBoxContainer"]
+[node name="MinimizeButton" type="TextureButton" parent="Panel/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_32048")
 
-[node name="TextureButton" type="TextureButton" parent="Panel/HBoxContainer"]
+[node name="ExitButton" type="TextureButton" parent="Panel/HBoxContainer" node_paths=PackedStringArray("window")]
 layout_mode = 2
 texture_normal = ExtResource("2_d5id1")
+script = ExtResource("6_i2ox6")
+window = NodePath("../../..")
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="ItekUser" type="Label" parent="Panel"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 44.0

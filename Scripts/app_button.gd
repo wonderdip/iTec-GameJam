@@ -3,6 +3,7 @@ class_name AppButton
 
 @export var app_name: String = ""
 @export var app_scene: PackedScene
+@onready var desktop: Control = $"../../.."
 
 var app_node: Control
 var scene_added: bool = false
@@ -22,9 +23,9 @@ func _process(delta: float) -> void:
 func _on_button_pressed():
 	if app_scene and not scene_added:
 		var app = app_scene.instantiate()
-		add_child(app, true)
+		desktop.add_child(app, true)
 		app_node = app
-		app_node.global_position = (get_viewport_rect().size / 2 + app_node.size / 2)
+		app_node.global_position = (get_viewport_rect().size / 2)
 		scene_added = true
 		z_index = 100
 		
