@@ -1,9 +1,136 @@
-[gd_scene format=3 uid="uid://bs4jgbm1wcfoq"]
+[gd_scene load_steps=8 format=3 uid="uid://bs4jgbm1wcfoq"]
+
+[ext_resource type="FontFile" uid="uid://cyj0qvfs1qf4k" path="res://6px-Normal.ttf" id="1_0u8ip"]
+[ext_resource type="Texture2D" uid="uid://cex7khu0tjjov" path="res://Assets/window.png" id="1_caufo"]
+[ext_resource type="Texture2D" uid="uid://cj5wuw7ujkhpx" path="res://Assets/user.png" id="2_8gyig"]
+[ext_resource type="Texture2D" uid="uid://dp5425hj1fhu6" path="res://Assets/minimize.png" id="2_32048"]
+[ext_resource type="Texture2D" uid="uid://chtcg4dary02u" path="res://Assets/exit.png" id="2_d5id1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d5id1"]
+texture = ExtResource("1_caufo")
+texture_margin_left = 3.0
+texture_margin_top = 6.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="Theme" id="Theme_8gyig"]
+Label/fonts/font = ExtResource("1_0u8ip")
+Panel/styles/panel = SubResource("StyleBoxTexture_d5id1")
 
 [node name="ThisPc" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -56.0
+offset_right = 72.0
+offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_8gyig")
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = 6.0
+offset_top = 10.0
+offset_right = 38.0
+offset_bottom = 42.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_8gyig")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 1.0
+offset_right = 141.0
+offset_bottom = 5.0
+theme_override_constants/separation = 1
+
+[node name="TextureButton2" type="TextureButton" parent="Panel/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_32048")
+
+[node name="TextureButton" type="TextureButton" parent="Panel/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_d5id1")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 44.0
+offset_right = 39.0
+offset_bottom = 52.0
+theme_override_font_sizes/font_size = 8
+text = "ITEK USER"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 10.0
+offset_right = 112.0
+offset_bottom = 106.0
+
+[node name="Stats" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "STATS:"
+
+[node name="AssignmentsDone" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "ASSIGNMENTS DONE:"
+
+[node name="Perfects" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "PERFECTS:"
+
+[node name="Failed" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "FAILED:"
+
+[node name="Upgrades" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "UPGRADES:"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 30.0
+offset_right = 138.0
+offset_bottom = 74.0
+
+[node name="AssignmentsNum" type="Label" parent="Panel/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "0"
+horizontal_alignment = 2
+
+[node name="PerfectsNum" type="Label" parent="Panel/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "0"
+horizontal_alignment = 2
+
+[node name="FailedNum" type="Label" parent="Panel/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "0"
+horizontal_alignment = 2
+
+[node name="UpgradesNum" type="Label" parent="Panel/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "0"
+horizontal_alignment = 2
