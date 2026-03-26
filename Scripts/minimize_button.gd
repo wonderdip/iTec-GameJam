@@ -1,5 +1,5 @@
 extends TextureButton
-class_name ExitButton
+class_name MinimizeButton
 
 @export var app: Application
 
@@ -16,5 +16,5 @@ func _process(delta: float) -> void:
 		modulate = Color.WHITE
 
 func _on_button_pressed():
-	app.closed = true
+	app.minimized = true
 	app.hide()

@@ -1,7 +1,7 @@
 extends TextureButton
-class_name AppButton
+class_name DesktopButton
 
-@export var app_name: String = ""
+@export_enum("Stats", "Files", "Teams", "Photoshop") var App: String
 @export var app_scene: PackedScene
 @onready var desktop: Control = $"../../.."
 
@@ -21,13 +21,4 @@ func _process(delta: float) -> void:
 		modulate = Color.WHITE
 
 func _on_button_pressed():
-	if app_scene and not scene_added:
-		var app = app_scene.instantiate()
-		desktop.add_child(app, true)
-		app_node = app
-		app_node.global_position = (get_viewport_rect().size / 2)
-		scene_added = true
-		z_index = 100
-		
-	elif scene_added:
-		app_node.show()
+	app_node = Global.open_app(App, app_scene, desktop)

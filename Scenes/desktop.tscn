@@ -1,18 +1,28 @@
-[gd_scene load_steps=10 format=3 uid="uid://u7tonldcdrrn"]
+[gd_scene load_steps=16 format=3 uid="uid://u7tonldcdrrn"]
 
 [ext_resource type="Texture2D" uid="uid://ql1efarbwpxw" path="res://Assets/desktop.png" id="1_hjcrg"]
 [ext_resource type="Texture2D" uid="uid://bh6ks6410hnqj" path="res://Assets/icons/pc.png" id="2_wmsow"]
-[ext_resource type="Script" uid="uid://dbcypsrwmp666" path="res://Scripts/app_button.gd" id="3_670jt"]
+[ext_resource type="Script" uid="uid://dbcypsrwmp666" path="res://Scripts/desktop_button.gd" id="3_670jt"]
 [ext_resource type="Texture2D" uid="uid://oae7k74ebblw" path="res://Assets/icons/trash.png" id="3_mcvbk"]
-[ext_resource type="PackedScene" uid="uid://bs4jgbm1wcfoq" path="res://Scenes/this_pc.tscn" id="4_uegd8"]
+[ext_resource type="PackedScene" uid="uid://bs4jgbm1wcfoq" path="res://Scenes/stats.tscn" id="4_uegd8"]
 [ext_resource type="Texture2D" uid="uid://dvfp8njit75v1" path="res://Assets/icons/files.png" id="5_m3b6i"]
 [ext_resource type="Texture2D" uid="uid://b81j7iugdvdx8" path="res://Assets/icons/teams.png" id="6_uegd8"]
 [ext_resource type="Texture2D" uid="uid://cseqji6dau67t" path="res://Assets/icons/photoshop.png" id="7_fy7rl"]
 [ext_resource type="Texture2D" uid="uid://cpthdw5a5sxa6" path="res://Assets/icons/settings.png" id="8_m3b6i"]
+[ext_resource type="Texture2D" uid="uid://bt3gi3mr3kxug" path="res://Assets/icons/Minipc.png" id="10_gel6t"]
+[ext_resource type="Script" uid="uid://cg8hx0fp6bghy" path="res://Scripts/taskbar_button.gd" id="11_1djlj"]
+[ext_resource type="Texture2D" uid="uid://b0mqu58yu1f5v" path="res://Assets/icons/Minifiles.png" id="11_j7wpw"]
+[ext_resource type="Texture2D" uid="uid://b8bjmji5lsqjo" path="res://Assets/icons/MiniTeams.png" id="12_1djlj"]
+[ext_resource type="Texture2D" uid="uid://gsfyyjl2v7uc" path="res://Assets/icons/MiniPhotoshop.png" id="13_ghx37"]
+[ext_resource type="Texture2D" uid="uid://dp5425hj1fhu6" path="res://Assets/minimize.png" id="14_j7wpw"]
 
 [node name="Desktop" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Desktop" type="Sprite2D" parent="."]
 position = Vector2(128, 72)
@@ -21,10 +31,10 @@ texture = ExtResource("1_hjcrg")
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 0
-offset_left = 2.0
+offset_left = 4.0
 offset_top = 2.0
-offset_right = 254.0
-offset_bottom = 16.0
+offset_right = 252.0
+offset_bottom = 90.0
 theme_override_constants/separation = 2
 
 [node name="ColumnOne" type="VBoxContainer" parent="HBoxContainer"]
@@ -32,11 +42,11 @@ custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="ThisPc" type="TextureButton" parent="HBoxContainer/ColumnOne"]
+[node name="Stats" type="TextureButton" parent="HBoxContainer/ColumnOne"]
 layout_mode = 2
 texture_normal = ExtResource("2_wmsow")
 script = ExtResource("3_670jt")
-app_name = "This Pc"
+App = "Stats"
 app_scene = ExtResource("4_uegd8")
 metadata/_custom_type_script = "uid://dbcypsrwmp666"
 
@@ -44,28 +54,27 @@ metadata/_custom_type_script = "uid://dbcypsrwmp666"
 layout_mode = 2
 texture_normal = ExtResource("3_mcvbk")
 script = ExtResource("3_670jt")
-app_name = "Trash"
 metadata/_custom_type_script = "uid://dbcypsrwmp666"
 
 [node name="Files" type="TextureButton" parent="HBoxContainer/ColumnOne"]
 layout_mode = 2
 texture_normal = ExtResource("5_m3b6i")
 script = ExtResource("3_670jt")
-app_name = "Files"
+App = "Files"
 metadata/_custom_type_script = "uid://dbcypsrwmp666"
 
 [node name="Teams" type="TextureButton" parent="HBoxContainer/ColumnOne"]
 layout_mode = 2
 texture_normal = ExtResource("6_uegd8")
 script = ExtResource("3_670jt")
-app_name = "Teams"
+App = "Teams"
 metadata/_custom_type_script = "uid://dbcypsrwmp666"
 
-[node name="Application" type="TextureButton" parent="HBoxContainer/ColumnOne"]
+[node name="PhotoShop" type="TextureButton" parent="HBoxContainer/ColumnOne"]
 layout_mode = 2
 texture_normal = ExtResource("7_fy7rl")
 script = ExtResource("3_670jt")
-app_name = "Photoshop"
+App = "Photoshop"
 metadata/_custom_type_script = "uid://dbcypsrwmp666"
 
 [node name="ColumnTwo" type="VBoxContainer" parent="HBoxContainer"]
@@ -75,5 +84,57 @@ layout_mode = 2
 layout_mode = 2
 texture_normal = ExtResource("8_m3b6i")
 script = ExtResource("3_670jt")
-app_name = "Settings"
 metadata/_custom_type_script = "uid://dbcypsrwmp666"
+
+[node name="TaskBar" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 131.0
+offset_right = 176.0
+offset_bottom = 140.0
+
+[node name="MiniStats" type="TextureButton" parent="TaskBar" node_paths=PackedStringArray("taskbar_indicator")]
+layout_mode = 2
+texture_normal = ExtResource("10_gel6t")
+script = ExtResource("11_1djlj")
+App = "Stats"
+app_scene = ExtResource("4_uegd8")
+taskbar_indicator = NodePath("../../TaskBarIndicator")
+metadata/_custom_type_script = "uid://cg8hx0fp6bghy"
+
+[node name="MiniFiles" type="TextureButton" parent="TaskBar" node_paths=PackedStringArray("taskbar_indicator")]
+layout_mode = 2
+texture_normal = ExtResource("11_j7wpw")
+script = ExtResource("11_1djlj")
+taskbar_indicator = NodePath("../../TaskBarIndicator2")
+metadata/_custom_type_script = "uid://cg8hx0fp6bghy"
+
+[node name="MiniTeams" type="TextureButton" parent="TaskBar" node_paths=PackedStringArray("taskbar_indicator")]
+layout_mode = 2
+texture_normal = ExtResource("12_1djlj")
+script = ExtResource("11_1djlj")
+taskbar_indicator = NodePath("../../TaskBarIndicator3")
+metadata/_custom_type_script = "uid://cg8hx0fp6bghy"
+
+[node name="MiniPhotshop" type="TextureButton" parent="TaskBar" node_paths=PackedStringArray("taskbar_indicator")]
+layout_mode = 2
+texture_normal = ExtResource("13_ghx37")
+script = ExtResource("11_1djlj")
+taskbar_indicator = NodePath("../../TaskBarIndicator4")
+metadata/_custom_type_script = "uid://cg8hx0fp6bghy"
+
+[node name="TaskBarIndicator" type="Sprite2D" parent="."]
+position = Vector2(59, 141)
+texture = ExtResource("14_j7wpw")
+
+[node name="TaskBarIndicator2" type="Sprite2D" parent="."]
+position = Vector2(72, 141)
+texture = ExtResource("14_j7wpw")
+
+[node name="TaskBarIndicator3" type="Sprite2D" parent="."]
+position = Vector2(85, 141)
+texture = ExtResource("14_j7wpw")
+
+[node name="TaskBarIndicator4" type="Sprite2D" parent="."]
+position = Vector2(98, 141)
+texture = ExtResource("14_j7wpw")

@@ -1,11 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bs4jgbm1wcfoq"]
+[gd_scene load_steps=12 format=3 uid="uid://bs4jgbm1wcfoq"]
 
 [ext_resource type="FontFile" uid="uid://cyj0qvfs1qf4k" path="res://6px-Normal.ttf" id="1_0u8ip"]
+[ext_resource type="Script" uid="uid://dqenx3ahqvyhy" path="res://Scripts/application.gd" id="1_5wx8j"]
 [ext_resource type="Texture2D" uid="uid://cex7khu0tjjov" path="res://Assets/window.png" id="1_caufo"]
 [ext_resource type="Texture2D" uid="uid://cj5wuw7ujkhpx" path="res://Assets/user.png" id="2_8gyig"]
 [ext_resource type="Texture2D" uid="uid://dp5425hj1fhu6" path="res://Assets/minimize.png" id="2_32048"]
 [ext_resource type="Texture2D" uid="uid://chtcg4dary02u" path="res://Assets/exit.png" id="2_d5id1"]
+[ext_resource type="Script" uid="uid://dh56yu17y7hxs" path="res://Scripts/minimize_button.gd" id="6_gkgit"]
 [ext_resource type="Script" uid="uid://b1bbwlq5jo0r4" path="res://Scripts/exit_button.gd" id="6_i2ox6"]
+[ext_resource type="Script" uid="uid://c4xqyljlfogp1" path="res://Scripts/window_dragger.gd" id="7_21wcn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d5id1"]
 texture = ExtResource("1_caufo")
@@ -18,9 +21,10 @@ texture_margin_bottom = 3.0
 Label/fonts/font = ExtResource("1_0u8ip")
 Panel/styles/panel = SubResource("StyleBoxTexture_d5id1")
 
-[node name="ThisPc" type="Control"]
+[node name="Stats" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_5wx8j")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -30,9 +34,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -72.0
-offset_top = -56.0
+offset_top = -40.0
 offset_right = 72.0
-offset_bottom = 56.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_8gyig")
@@ -56,15 +60,17 @@ offset_right = 141.0
 offset_bottom = 5.0
 theme_override_constants/separation = 1
 
-[node name="MinimizeButton" type="TextureButton" parent="Panel/HBoxContainer"]
+[node name="MinimizeButton" type="TextureButton" parent="Panel/HBoxContainer" node_paths=PackedStringArray("app")]
 layout_mode = 2
 texture_normal = ExtResource("2_32048")
+script = ExtResource("6_gkgit")
+app = NodePath("../../..")
 
-[node name="ExitButton" type="TextureButton" parent="Panel/HBoxContainer" node_paths=PackedStringArray("window")]
+[node name="ExitButton" type="TextureButton" parent="Panel/HBoxContainer" node_paths=PackedStringArray("app")]
 layout_mode = 2
 texture_normal = ExtResource("2_d5id1")
 script = ExtResource("6_i2ox6")
-window = NodePath("../../..")
+app = NodePath("../../..")
 
 [node name="ItekUser" type="Label" parent="Panel"]
 layout_mode = 0
@@ -137,3 +143,14 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "0"
 horizontal_alignment = 2
+
+[node name="WindowDragger" type="Control" parent="." node_paths=PackedStringArray("app")]
+anchors_preset = 0
+offset_left = -64.0
+offset_top = -40.0
+offset_right = 56.0
+offset_bottom = -35.0
+script = ExtResource("7_21wcn")
+app = NodePath("..")
+
+[connection signal="gui_input" from="WindowDragger" to="WindowDragger" method="_on_gui_input"]

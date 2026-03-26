@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c5xb8t408k4cs"]
 
-[ext_resource type="Script" uid="uid://dbcypsrwmp666" path="res://Scripts/app_button.gd" id="1_7rue7"]
+[ext_resource type="Script" uid="uid://dbcypsrwmp666" path="res://Scripts/desktop_button.gd" id="1_7rue7"]
 
 [node name="Application" type="TextureButton"]
 anchors_preset = 15
