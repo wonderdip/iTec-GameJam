@@ -1,8 +1,7 @@
 extends TextureButton
 class_name DesktopButton
 
-@export_enum("Stats", "Files", "Teams", "Photoshop") var App: String
-@export var app_scene: PackedScene
+@export var app_data: AppData
 @onready var desktop: Control = $"../../.."
 
 var app_node: Control
@@ -12,7 +11,7 @@ func _ready() -> void:
 	pressed.connect(_on_button_pressed)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_hovered():
 		texture_hover = texture_normal
 		modulate = Color(0.5, 0.5, 0.5)
@@ -21,4 +20,4 @@ func _process(delta: float) -> void:
 		modulate = Color.WHITE
 
 func _on_button_pressed():
-	app_node = Global.open_app(App, app_scene, desktop)
+	app_node = Global.open_app(app_data, desktop)

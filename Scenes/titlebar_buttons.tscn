@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4oy47oc4klsf"]
+
+[ext_resource type="Texture2D" uid="uid://dp5425hj1fhu6" path="res://Assets/minimize.png" id="1_epsbx"]
+[ext_resource type="Script" uid="uid://dky0duvtrq2kh" path="res://Scripts/titlebar_buttons.gd" id="1_ihmnr"]
+[ext_resource type="Script" uid="uid://dh56yu17y7hxs" path="res://Scripts/minimize_button.gd" id="2_ihmnr"]
+[ext_resource type="Texture2D" uid="uid://chtcg4dary02u" path="res://Assets/exit.png" id="3_2lfx2"]
+[ext_resource type="Script" uid="uid://b1bbwlq5jo0r4" path="res://Scripts/exit_button.gd" id="4_qbvc0"]
+
+[node name="TitleBarButtons" type="HBoxContainer"]
+offset_right = 9.0
+offset_bottom = 4.0
+theme_override_constants/separation = 1
+script = ExtResource("1_ihmnr")
+
+[node name="MinimizeButton" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("1_epsbx")
+script = ExtResource("2_ihmnr")
+
+[node name="ExitButton" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("3_2lfx2")
+script = ExtResource("4_qbvc0")

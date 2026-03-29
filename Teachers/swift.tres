@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TeacherData" load_steps=2 format=3 uid="uid://ehds0evghsg5"]
+
+[ext_resource type="Script" uid="uid://dw5suxgavsn1y" path="res://Scripts/teacher_data.gd" id="1_32xp4"]
+
+[resource]
+script = ExtResource("1_32xp4")
+name = "Mr. Swift"
+metadata/_custom_type_script = "uid://dw5suxgavsn1y"

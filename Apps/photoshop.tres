@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AppData" load_steps=3 format=3 uid="uid://c2rn0inmwdp0j"]
+
+[ext_resource type="Script" uid="uid://ys1jjv8qbfd8" path="res://Scripts/app_data.gd" id="1_bys0p"]
+[ext_resource type="PackedScene" uid="uid://kxkoro2tcln4" path="res://Scenes/photoshop.tscn" id="1_x73g3"]
+
+[resource]
+script = ExtResource("1_bys0p")
+app_name = "PhotoShop"
+app_scene = ExtResource("1_x73g3")
+metadata/_custom_type_script = "uid://ys1jjv8qbfd8"

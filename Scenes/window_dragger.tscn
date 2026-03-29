@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx4f5oy7b7uld"]
+
+[ext_resource type="Script" uid="uid://c4xqyljlfogp1" path="res://Scripts/window_dragger.gd" id="1_imssp"]
+
+[node name="WindowDragger" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 120.0
+offset_bottom = 5.0
+script = ExtResource("1_imssp")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

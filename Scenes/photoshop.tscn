@@ -1,0 +1,190 @@
+[gd_scene load_steps=15 format=3 uid="uid://kxkoro2tcln4"]
+
+[ext_resource type="Script" uid="uid://dqenx3ahqvyhy" path="res://Scripts/application.gd" id="1_m0j4n"]
+[ext_resource type="Texture2D" uid="uid://yw583u5x278l" path="res://Assets/WhiteWindow.png" id="2_pr43p"]
+[ext_resource type="Script" uid="uid://bywmvog8v0ovs" path="res://Scripts/canvas.gd" id="3_10ws3"]
+[ext_resource type="Texture2D" uid="uid://b12ilgwmhctna" path="res://Assets/Pencil.png" id="3_37ts1"]
+[ext_resource type="Texture2D" uid="uid://i47ydjueeyup" path="res://Assets/Eraser.png" id="4_j253y"]
+[ext_resource type="Texture2D" uid="uid://h46jvncqdw2t" path="res://Assets/grabber.png" id="5_j253y"]
+[ext_resource type="Texture2D" uid="uid://b8ldx666bfn8a" path="res://Assets/Bucket.png" id="6_1dnlk"]
+[ext_resource type="Texture2D" uid="uid://dpgtei3i0ta7w" path="res://Assets/slider.png" id="6_unr14"]
+[ext_resource type="Script" uid="uid://f34mkwsdgybe" path="res://Scripts/color_button.gd" id="7_unr14"]
+[ext_resource type="PackedScene" uid="uid://dx4f5oy7b7uld" path="res://Scenes/window_dragger.tscn" id="8_h5iex"]
+[ext_resource type="PackedScene" uid="uid://c4oy47oc4klsf" path="res://Scenes/titlebar_buttons.tscn" id="9_01yk7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_unr14"]
+texture = ExtResource("2_pr43p")
+texture_margin_left = 3.0
+texture_margin_top = 6.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h5iex"]
+texture = ExtResource("6_unr14")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j253y"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Photoshop" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_m0j4n")
+metadata/_custom_type_script = "uid://dqenx3ahqvyhy"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -87.0
+offset_top = -66.0
+offset_right = 87.0
+offset_bottom = 66.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_unr14")
+
+[node name="Canvas" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 20.0
+offset_right = 172.0
+offset_bottom = 122.0
+script = ExtResource("3_10ws3")
+
+[node name="Seperator" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_top = 18.0
+offset_right = 174.0
+offset_bottom = 20.0
+color = Color(0, 0, 0, 1)
+
+[node name="Seperator" type="ColorRect" parent="Panel/Seperator"]
+layout_mode = 0
+offset_top = 104.0
+offset_right = 174.0
+offset_bottom = 112.0
+color = Color(0, 0, 0, 1)
+
+[node name="CurrentColor" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 6.0
+offset_right = 169.0
+offset_bottom = 17.0
+color = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 72.0
+offset_bottom = 17.0
+
+[node name="Pencil" type="TextureButton" parent="Panel/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_37ts1")
+
+[node name="Eraser" type="TextureButton" parent="Panel/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_j253y")
+
+[node name="Bucket" type="TextureButton" parent="Panel/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_1dnlk")
+
+[node name="BrushSize" type="HSlider" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(38, 11)
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("5_j253y")
+theme_override_icons/grabber_highlight = ExtResource("5_j253y")
+theme_override_styles/slider = SubResource("StyleBoxTexture_h5iex")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_j253y")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_j253y")
+min_value = 1.0
+max_value = 5.0
+value = 3.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="ColorContainerOne" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(94, 5)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 1
+
+[node name="Red" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer/ColorContainerOne"]
+layout_mode = 2
+script = ExtResource("7_unr14")
+color = Color(1, 0, 0, 1)
+metadata/_custom_type_script = "uid://f34mkwsdgybe"
+
+[node name="Blue" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer/ColorContainerOne"]
+layout_mode = 2
+script = ExtResource("7_unr14")
+color = Color(0, 0.3333335, 1, 1)
+metadata/_custom_type_script = "uid://f34mkwsdgybe"
+
+[node name="Green" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer/ColorContainerOne"]
+layout_mode = 2
+script = ExtResource("7_unr14")
+color = Color(0.17066665, 0.64, 0, 1)
+metadata/_custom_type_script = "uid://f34mkwsdgybe"
+
+[node name="Yellow" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer/ColorContainerOne"]
+layout_mode = 2
+script = ExtResource("7_unr14")
+color = Color(0.94, 0.8773334, 0, 1)
+metadata/_custom_type_script = "uid://f34mkwsdgybe"
+
+[node name="ColorContainerTwo" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(94, 5)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 1
+
+[node name="Orange" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer/ColorContainerTwo"]
+layout_mode = 2
+script = ExtResource("7_unr14")
+color = Color(1, 0.56666666, 0, 1)
+metadata/_custom_type_script = "uid://f34mkwsdgybe"
+
+[node name="Pink" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer/ColorContainerTwo"]
+layout_mode = 2
+script = ExtResource("7_unr14")
+color = Color(0.98733354, 0.24000001, 1, 1)
+metadata/_custom_type_script = "uid://f34mkwsdgybe"
+
+[node name="Purple" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer/ColorContainerTwo"]
+layout_mode = 2
+script = ExtResource("7_unr14")
+color = Color(0.49696663, 0.09350002, 0.85, 1)
+metadata/_custom_type_script = "uid://f34mkwsdgybe"
+
+[node name="Black" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer/ColorContainerTwo"]
+layout_mode = 2
+script = ExtResource("7_unr14")
+metadata/_custom_type_script = "uid://f34mkwsdgybe"
+
+[node name="WindowDragger" parent="." node_paths=PackedStringArray("app") instance=ExtResource("8_h5iex")]
+layout_mode = 0
+offset_left = -83.0
+offset_top = -66.0
+offset_right = 72.0
+offset_bottom = -61.0
+app = NodePath("..")
+
+[node name="TitleBarButtons" parent="." node_paths=PackedStringArray("app") instance=ExtResource("9_01yk7")]
+layout_mode = 0
+offset_left = 75.0
+offset_top = -65.0
+offset_right = 84.0
+offset_bottom = -61.0
+app = NodePath("..")
+
+[connection signal="gui_input" from="Panel/Canvas" to="Panel/Canvas" method="_on_gui_input"]
+[connection signal="pressed" from="Panel/HBoxContainer/Pencil" to="Panel/Canvas" method="_on_pencil_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Eraser" to="Panel/Canvas" method="_on_eraser_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Bucket" to="Panel/Canvas" method="_on_bucket_pressed"]
+[connection signal="value_changed" from="Panel/HBoxContainer/BrushSize" to="Panel/Canvas" method="_on_brush_size_value_changed"]

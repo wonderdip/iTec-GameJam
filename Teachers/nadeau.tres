@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TeacherData" load_steps=2 format=3 uid="uid://c2tmns4f32yxv"]
+
+[ext_resource type="Script" uid="uid://dw5suxgavsn1y" path="res://Scripts/teacher_data.gd" id="1_h2is8"]
+
+[resource]
+script = ExtResource("1_h2is8")
+name = "Mr. Nadeau"
+metadata/_custom_type_script = "uid://dw5suxgavsn1y"

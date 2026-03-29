@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AppData" load_steps=3 format=3 uid="uid://cl7dvc4rnu4x5"]
+
+[ext_resource type="PackedScene" uid="uid://cfjkhmegrrak2" path="res://Scenes/teams.tscn" id="1_5corl"]
+[ext_resource type="Script" uid="uid://ys1jjv8qbfd8" path="res://Scripts/app_data.gd" id="1_phjpj"]
+
+[resource]
+script = ExtResource("1_phjpj")
+app_name = "Teams"
+app_scene = ExtResource("1_5corl")
+metadata/_custom_type_script = "uid://ys1jjv8qbfd8"

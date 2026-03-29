@@ -1,8 +1,7 @@
 extends TextureButton
 class_name TaskBarButton
 
-@export_enum("Stats", "Files", "Teams", "Photoshop") var App: String
-@export var app_scene: PackedScene
+@export var app_data: AppData
 @export var taskbar_indicator: Sprite2D
 @onready var desktop: Control = $"../.."
 
@@ -20,13 +19,14 @@ func _process(delta: float) -> void:
 			
 	else:
 		modulate = Color.WHITE
-		
-	var app_node: Application = Global.get_app(App)
+	
+	
+	var app_node: Application = Global.get_app(app_data)
 	if app_node:
 		taskbar_indicator.visible = app_node.visible
 		
 func _on_button_pressed():
-	var app = Global.open_app(App, app_scene, desktop)
+	var app = Global.open_app(app_data, desktop)
 	
 	if app.closed:
 		app.show()
