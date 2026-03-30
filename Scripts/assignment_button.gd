@@ -1,21 +1,15 @@
 extends Button
 class_name AssignmentButton
 
-@export_multiline var title: String = ""
 @onready var title_label: Label = $VBoxContainer/AssignmentTitle
 @onready var teacher_label: Label = $VBoxContainer/Teacher
+@onready var teams: Application = $"../../../../.."
 
-const TEACHERS := [
-	"Mr. Hahnel",
-	"Mr. Larouche",
-	"Mr. Nadeau",
-	"Mr. Deslippes",
-	"Mr. Broad",
-	"Mr. Swieca",
-	"Mr. Swift"
-]
+var assignment: AssignmentData
+var teacher: TeacherData
 
 func _ready() -> void:
-	title_label.text = title
-	teacher_label.text = TEACHERS.pick_random()
-	
+	teacher = teams.teachers.pick_random()
+	teacher_label.text = (teacher.name + " " + teacher.specialty.app_name)
+	assignment = teacher.assignments.pick_random()
+	title_label.text = assignment.assignment_title

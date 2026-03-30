@@ -1,8 +1,18 @@
-[gd_resource type="Resource" script_class="TeacherData" load_steps=2 format=3 uid="uid://dyeiepp5tvust"]
+[gd_resource type="Resource" script_class="TeacherData" load_steps=5 format=3 uid="uid://dyeiepp5tvust"]
 
+[ext_resource type="Script" uid="uid://bvvmgegkc1ik6" path="res://Scripts/assignment_data.gd" id="1_edsqm"]
 [ext_resource type="Script" uid="uid://dw5suxgavsn1y" path="res://Scripts/teacher_data.gd" id="1_u52cg"]
+[ext_resource type="Resource" uid="uid://c2rn0inmwdp0j" path="res://Apps/photoshop.tres" id="2_fhrv4"]
+
+[sub_resource type="Resource" id="Resource_paaun"]
+script = ExtResource("1_edsqm")
+assignment_title = "AI Essay"
+assignment_details = "Write 6 or 7 Essays about AI"
+metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 
 [resource]
 script = ExtResource("1_u52cg")
 name = "Mr. Hahnel"
+specialty = ExtResource("2_fhrv4")
+assignments = Array[ExtResource("1_edsqm")]([SubResource("Resource_paaun")])
 metadata/_custom_type_script = "uid://dw5suxgavsn1y"

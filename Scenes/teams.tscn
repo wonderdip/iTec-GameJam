@@ -1,16 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfjkhmegrrak2"]
+[gd_scene load_steps=12 format=3 uid="uid://cfjkhmegrrak2"]
 
 [ext_resource type="Script" uid="uid://dqenx3ahqvyhy" path="res://Scripts/application.gd" id="1_0f3kd"]
 [ext_resource type="Theme" uid="uid://bgvcpnl7jyrfv" path="res://default.tres" id="2_trs8k"]
+[ext_resource type="Script" uid="uid://dw5suxgavsn1y" path="res://Scripts/teacher_data.gd" id="2_uelq8"]
 [ext_resource type="PackedScene" uid="uid://nem7ay235ejo" path="res://Scenes/assignment_button.tscn" id="3_gme0u"]
+[ext_resource type="Resource" uid="uid://ehds0evghsg5" path="res://Teachers/swift.tres" id="3_ik1aw"]
 [ext_resource type="PackedScene" uid="uid://c4oy47oc4klsf" path="res://Scenes/titlebar_buttons.tscn" id="3_x5o4i"]
+[ext_resource type="Resource" uid="uid://dyeiepp5tvust" path="res://Teachers/hahnel.tres" id="4_6uxok"]
+[ext_resource type="Resource" uid="uid://c2tmns4f32yxv" path="res://Teachers/nadeau.tres" id="5_a50o7"]
 [ext_resource type="PackedScene" uid="uid://dx4f5oy7b7uld" path="res://Scenes/window_dragger.tscn" id="5_gme0u"]
+[ext_resource type="Script" uid="uid://i20o0mpvq51s" path="res://Scripts/teams.gd" id="7_ik1aw"]
+[ext_resource type="FontFile" uid="uid://cyj0qvfs1qf4k" path="res://6px-Normal.ttf" id="9_6uxok"]
 
 [node name="Teams" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 4
 script = ExtResource("1_0f3kd")
+teachers = Array[ExtResource("2_uelq8")]([ExtResource("3_ik1aw"), ExtResource("4_6uxok"), ExtResource("5_a50o7")])
 metadata/_custom_type_script = "uid://dqenx3ahqvyhy"
 
 [node name="Panel" type="Panel" parent="."]
@@ -27,8 +34,15 @@ offset_bottom = 58.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_trs8k")
+script = ExtResource("7_ik1aw")
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="AssignmentList" type="Control" parent="Panel"]
+visible = false
+anchors_preset = 0
+offset_right = 208.0
+offset_bottom = 116.0
+
+[node name="Label" type="Label" parent="Panel/AssignmentList"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 8.0
@@ -37,32 +51,86 @@ offset_bottom = 16.0
 theme_override_font_sizes/font_size = 8
 text = "ASSIGNMENTS:"
 
-[node name="TitleBarButtons" parent="Panel" node_paths=PackedStringArray("app") instance=ExtResource("3_x5o4i")]
-layout_mode = 0
-offset_left = 196.0
-offset_top = 1.0
-offset_right = 205.0
-offset_bottom = 5.0
-app = NodePath("../..")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/AssignmentList"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 20.0
 offset_right = 202.0
 offset_bottom = 110.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+[node name="ButtonContainer" type="VBoxContainer" parent="Panel/AssignmentList/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_gme0u")]
+[node name="Button" parent="Panel/AssignmentList/ScrollContainer/ButtonContainer" instance=ExtResource("3_gme0u")]
 layout_mode = 2
-title = "Stupid AI Assignemnt"
 
-[node name="Button2" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_gme0u")]
+[node name="Button2" parent="Panel/AssignmentList/ScrollContainer/ButtonContainer" instance=ExtResource("3_gme0u")]
 layout_mode = 2
+
+[node name="AssignmentDetails" type="Control" parent="Panel"]
+anchors_preset = 0
+offset_right = 208.0
+offset_bottom = 116.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/AssignmentDetails"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 104.0
+offset_bottom = 110.0
+
+[node name="BackButton" type="Button" parent="Panel/AssignmentDetails/VBoxContainer"]
+custom_minimum_size = Vector2(33, 9)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("9_6uxok")
+
+[node name="Label" type="Label" parent="Panel/AssignmentDetails/VBoxContainer/BackButton"]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 20.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 8
+text = "Back"
+
+[node name="Title" type="Label" parent="Panel/AssignmentDetails/VBoxContainer"]
+layout_mode = 2
+text = "Title"
+
+[node name="Details" type="Label" parent="Panel/AssignmentDetails/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Details"
+
+[node name="WorkButton" type="Button" parent="Panel/AssignmentDetails/VBoxContainer"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/AssignmentDetails/VBoxContainer/WorkButton"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 42.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 8
+text = "My Work"
+
+[node name="NewButton" type="Button" parent="Panel/AssignmentDetails/VBoxContainer"]
+custom_minimum_size = Vector2(49, 9)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("9_6uxok")
+theme_override_font_sizes/font_size = 8
+
+[node name="Label" type="Label" parent="Panel/AssignmentDetails/VBoxContainer/NewButton"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 42.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 8
+text = "+ New"
 
 [node name="WindowDragger" parent="." node_paths=PackedStringArray("app") instance=ExtResource("5_gme0u")]
 layout_mode = 0
@@ -71,3 +139,14 @@ offset_top = -58.0
 offset_right = 88.0
 offset_bottom = -53.0
 app = NodePath("..")
+
+[node name="TitleBarButtons" parent="." node_paths=PackedStringArray("app") instance=ExtResource("3_x5o4i")]
+layout_mode = 0
+offset_left = 92.0
+offset_top = -57.0
+offset_right = 101.0
+offset_bottom = -53.0
+app = NodePath("..")
+
+[connection signal="pressed" from="Panel/AssignmentDetails/VBoxContainer/BackButton" to="Panel" method="_on_back_button_pressed"]
+[connection signal="pressed" from="Panel/AssignmentDetails/VBoxContainer/NewButton" to="Panel" method="_on_new_button_pressed"]
