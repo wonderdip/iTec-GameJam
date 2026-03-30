@@ -106,6 +106,15 @@ func _process(_delta: float) -> void:
 		bucket_button.modulate = Color.WHITE
 	
 	current_color_rect.color = current_color
+	
+func get_painted_ratio() -> float:
+	var painted := 0
+	for x in image.get_width():
+		for y in image.get_height():
+			if image.get_pixel(x, y) != Color.WHITE:
+				painted += 1
+	return float(painted) / (image.get_width() * image.get_height())
+	
 func _on_brush_size_value_changed(value: float) -> void:
 	brush_size = int(value)
 

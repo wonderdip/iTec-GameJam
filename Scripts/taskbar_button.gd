@@ -12,14 +12,13 @@ func _ready() -> void:
 	taskbar_indicator.hide()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_hovered():
 		texture_hover = texture_normal
 		modulate = Color(0.5, 0.5, 0.5)
 			
 	else:
 		modulate = Color.WHITE
-	
 	
 	var app_node: Application = Global.get_app(app_data)
 	if app_node:

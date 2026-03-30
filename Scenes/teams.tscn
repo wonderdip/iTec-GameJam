@@ -42,32 +42,75 @@ anchors_preset = 0
 offset_right = 208.0
 offset_bottom = 116.0
 
-[node name="Label" type="Label" parent="Panel/AssignmentList"]
+[node name="UpcomingList" type="Button" parent="Panel/AssignmentList"]
+custom_minimum_size = Vector2(0, 9)
 layout_mode = 0
 offset_left = 6.0
 offset_top = 8.0
-offset_right = 54.0
+offset_right = 98.0
 offset_bottom = 16.0
-theme_override_font_sizes/font_size = 8
-text = "ASSIGNMENTS:"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/AssignmentList"]
+[node name="Label" type="Label" parent="Panel/AssignmentList/UpcomingList"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 86.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 8
+text = "UPCOMING ASSIGNMENTS:"
+
+[node name="HandedInList" type="Button" parent="Panel/AssignmentList"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 0
+offset_left = 160.0
+offset_top = 8.0
+offset_right = 202.0
+offset_bottom = 17.0
+
+[node name="Label" type="Label" parent="Panel/AssignmentList/HandedInList"]
+layout_mode = 0
+offset_left = 3.0
+offset_right = 40.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 8
+text = "HANDED IN:"
+horizontal_alignment = 2
+
+[node name="UpcomingScroller" type="ScrollContainer" parent="Panel/AssignmentList"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 20.0
 offset_right = 202.0
 offset_bottom = 110.0
 
-[node name="ButtonContainer" type="VBoxContainer" parent="Panel/AssignmentList/ScrollContainer"]
+[node name="ButtonContainer" type="VBoxContainer" parent="Panel/AssignmentList/UpcomingScroller"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" parent="Panel/AssignmentList/ScrollContainer/ButtonContainer" instance=ExtResource("3_gme0u")]
+[node name="Button" parent="Panel/AssignmentList/UpcomingScroller/ButtonContainer" instance=ExtResource("3_gme0u")]
 layout_mode = 2
 
-[node name="Button2" parent="Panel/AssignmentList/ScrollContainer/ButtonContainer" instance=ExtResource("3_gme0u")]
+[node name="Button2" parent="Panel/AssignmentList/UpcomingScroller/ButtonContainer" instance=ExtResource("3_gme0u")]
 layout_mode = 2
+
+[node name="Button3" parent="Panel/AssignmentList/UpcomingScroller/ButtonContainer" instance=ExtResource("3_gme0u")]
+layout_mode = 2
+
+[node name="Button4" parent="Panel/AssignmentList/UpcomingScroller/ButtonContainer" instance=ExtResource("3_gme0u")]
+layout_mode = 2
+
+[node name="HandedInScroller" type="ScrollContainer" parent="Panel/AssignmentList"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 20.0
+offset_right = 202.0
+offset_bottom = 110.0
+
+[node name="HandedInButtons" type="VBoxContainer" parent="Panel/AssignmentList/HandedInScroller"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="AssignmentDetails" type="Control" parent="Panel"]
 visible = false
@@ -145,6 +188,16 @@ theme_override_fonts/font = ExtResource("9_6uxok")
 theme_override_font_sizes/font_size = 8
 text = "Turn In"
 
+[node name="Grade" type="Label" parent="Panel/AssignmentDetails"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 8.0
+offset_right = 150.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("10_a50o7")
+text = "0/10"
+horizontal_alignment = 1
+
 [node name="WindowDragger" parent="." node_paths=PackedStringArray("app") instance=ExtResource("5_gme0u")]
 layout_mode = 0
 offset_left = -100.0
@@ -161,6 +214,9 @@ offset_right = 101.0
 offset_bottom = -53.0
 app = NodePath("..")
 
+[connection signal="pressed" from="Panel/AssignmentList/UpcomingList" to="Panel" method="_on_upcoming_list_pressed"]
+[connection signal="pressed" from="Panel/AssignmentList/HandedInList" to="Panel" method="_on_handed_in_list_pressed"]
 [connection signal="pressed" from="Panel/AssignmentDetails/VBoxContainer/BackButton" to="Panel" method="_on_back_button_pressed"]
+[connection signal="pressed" from="Panel/AssignmentDetails/VBoxContainer/WorkButton" to="Panel" method="_on_work_button_pressed"]
 [connection signal="pressed" from="Panel/AssignmentDetails/VBoxContainer/NewButton" to="Panel" method="_on_new_button_pressed"]
 [connection signal="pressed" from="Panel/AssignmentDetails/TurnInButton" to="Panel" method="_on_turn_in_button_pressed"]

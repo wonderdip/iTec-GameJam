@@ -62,6 +62,7 @@ context_menu_enabled = false
 backspace_deletes_composite_character_enabled = true
 virtual_keyboard_enabled = false
 virtual_keyboard_show_on_focus = false
+wrap_mode = 1
 
 [node name="WindowDragger" parent="." node_paths=PackedStringArray("app") instance=ExtResource("4_qhp6n")]
 layout_mode = 0
