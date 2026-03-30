@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://u7tonldcdrrn"]
+[gd_scene load_steps=19 format=3 uid="uid://u7tonldcdrrn"]
 
 [ext_resource type="Texture2D" uid="uid://ql1efarbwpxw" path="res://Assets/desktop.png" id="1_hjcrg"]
 [ext_resource type="Texture2D" uid="uid://bh6ks6410hnqj" path="res://Assets/icons/pc.png" id="2_wmsow"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://cg8hx0fp6bghy" path="res://Scripts/taskbar_button.gd" id="11_1djlj"]
 [ext_resource type="Texture2D" uid="uid://b0mqu58yu1f5v" path="res://Assets/icons/Minifiles.png" id="11_j7wpw"]
 [ext_resource type="Texture2D" uid="uid://b8bjmji5lsqjo" path="res://Assets/icons/MiniTeams.png" id="12_1djlj"]
+[ext_resource type="Resource" uid="uid://epw1ry1r5w7b" path="res://Apps/word.tres" id="12_4j8fu"]
 [ext_resource type="Texture2D" uid="uid://gsfyyjl2v7uc" path="res://Assets/icons/MiniPhotoshop.png" id="13_ghx37"]
 [ext_resource type="Texture2D" uid="uid://dp5425hj1fhu6" path="res://Assets/minimize.png" id="14_j7wpw"]
 
@@ -84,6 +85,7 @@ layout_mode = 2
 layout_mode = 2
 texture_normal = ExtResource("8_m3b6i")
 script = ExtResource("3_670jt")
+app_data = ExtResource("12_4j8fu")
 metadata/_custom_type_script = "uid://dbcypsrwmp666"
 
 [node name="TaskBar" type="HBoxContainer" parent="."]

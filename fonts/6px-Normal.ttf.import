@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bc36j2sl6fym5"
-path="res://.godot/imported/dogicapixel.otf-9d300d09c25a010d7c564f422ae29256.fontdata"
+uid="uid://cfoorayyo12e"
+path="res://.godot/imported/6px-Normal.ttf-a7a0c914fce9e7e8492735df25cd78aa.fontdata"
 
 [deps]
 
-source_file="res://dogicapixel.otf"
-dest_files=["res://.godot/imported/dogicapixel.otf-9d300d09c25a010d7c564f422ae29256.fontdata"]
+source_file="res://fonts/6px-Normal.ttf"
+dest_files=["res://.godot/imported/6px-Normal.ttf-a7a0c914fce9e7e8492735df25cd78aa.fontdata"]
 
 [params]
 
@@ -23,13 +23,13 @@ allow_system_fallback=true
 force_autohinter=false
 modulate_color_glyphs=false
 hinting=1
-subpixel_positioning=0
+subpixel_positioning=4
 keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]
 Compress=null
-compress=false
+compress=true
 preload=[]
 language_support={}
 script_support={}

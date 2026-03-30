@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cyj0qvfs1qf4k"
-path="res://.godot/imported/6px-Normal.ttf-df2109484b8581012a24761788d649c9.fontdata"
+uid="uid://cksshi54c44ta"
+path="res://.godot/imported/MP16REG.ttf-8fb0cf044f336403c4cafa61e851ffa8.fontdata"
 
 [deps]
 
-source_file="res://6px-Normal.ttf"
-dest_files=["res://.godot/imported/6px-Normal.ttf-df2109484b8581012a24761788d649c9.fontdata"]
+source_file="res://fonts/MP16REG.ttf"
+dest_files=["res://.godot/imported/MP16REG.ttf-8fb0cf044f336403c4cafa61e851ffa8.fontdata"]
 
 [params]
 

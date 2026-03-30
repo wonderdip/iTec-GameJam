@@ -12,6 +12,7 @@ func _ready() -> void:
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		dragging = event.pressed
+		Global.bring_to_front(app)
 	elif event is InputEventMouseMotion and dragging:
 		app.global_position += event.relative
 

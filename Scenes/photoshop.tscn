@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://kxkoro2tcln4"]
+[gd_scene load_steps=16 format=3 uid="uid://kxkoro2tcln4"]
 
 [ext_resource type="Script" uid="uid://dqenx3ahqvyhy" path="res://Scripts/application.gd" id="1_m0j4n"]
 [ext_resource type="Texture2D" uid="uid://yw583u5x278l" path="res://Assets/WhiteWindow.png" id="2_pr43p"]
 [ext_resource type="Script" uid="uid://bywmvog8v0ovs" path="res://Scripts/canvas.gd" id="3_10ws3"]
 [ext_resource type="Texture2D" uid="uid://b12ilgwmhctna" path="res://Assets/Pencil.png" id="3_37ts1"]
 [ext_resource type="Texture2D" uid="uid://i47ydjueeyup" path="res://Assets/Eraser.png" id="4_j253y"]
+[ext_resource type="FontFile" uid="uid://cfoorayyo12e" path="res://fonts/6px-Normal.ttf" id="4_pyrcl"]
 [ext_resource type="Texture2D" uid="uid://h46jvncqdw2t" path="res://Assets/grabber.png" id="5_j253y"]
 [ext_resource type="Texture2D" uid="uid://b8ldx666bfn8a" path="res://Assets/Bucket.png" id="6_1dnlk"]
 [ext_resource type="Texture2D" uid="uid://dpgtei3i0ta7w" path="res://Assets/slider.png" id="6_unr14"]
@@ -29,10 +30,11 @@ texture_margin_bottom = 2.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j253y"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="Photoshop" type="Control"]
+[node name="Photoshop" type="Control" node_paths=PackedStringArray("canvas")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_m0j4n")
+canvas = NodePath("Panel/Canvas")
 metadata/_custom_type_script = "uid://dqenx3ahqvyhy"
 
 [node name="Panel" type="Panel" parent="."]
@@ -69,15 +71,34 @@ color = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = 117.0
 offset_top = 6.0
-offset_right = 169.0
+offset_right = 141.0
 offset_bottom = 17.0
 color = Color(0, 0, 0, 1)
+
+[node name="ResetButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 6.0
+offset_right = 169.0
+offset_bottom = 17.0
+theme_override_fonts/font = ExtResource("4_pyrcl")
+theme_override_font_sizes/font_size = 8
+
+[node name="Label" type="Label" parent="Panel/ResetButton"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 22.0
+offset_bottom = 9.0
+theme_override_fonts/font = ExtResource("4_pyrcl")
+theme_override_font_sizes/font_size = 8
+text = "Reset"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 6.0
-offset_right = 72.0
+offset_right = 113.0
 offset_bottom = 17.0
 
 [node name="Pencil" type="TextureButton" parent="Panel/HBoxContainer"]
@@ -109,7 +130,7 @@ layout_mode = 2
 theme_override_constants/separation = 1
 
 [node name="ColorContainerOne" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(94, 5)
+custom_minimum_size = Vector2(22, 5)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 1
@@ -139,7 +160,7 @@ color = Color(0.94, 0.8773334, 0, 1)
 metadata/_custom_type_script = "uid://f34mkwsdgybe"
 
 [node name="ColorContainerTwo" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(94, 5)
+custom_minimum_size = Vector2(22, 5)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 1
@@ -184,6 +205,7 @@ offset_bottom = -61.0
 app = NodePath("..")
 
 [connection signal="gui_input" from="Panel/Canvas" to="Panel/Canvas" method="_on_gui_input"]
+[connection signal="pressed" from="Panel/ResetButton" to="Panel/Canvas" method="_on_reset_button_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/Pencil" to="Panel/Canvas" method="_on_pencil_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/Eraser" to="Panel/Canvas" method="_on_eraser_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/Bucket" to="Panel/Canvas" method="_on_bucket_pressed"]

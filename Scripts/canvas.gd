@@ -1,4 +1,5 @@
 extends ColorRect
+class_name Canvas
 
 var current_color: Color = Color.BLACK
 var brush_size: int = 3
@@ -16,10 +17,14 @@ var drawing := false
 @onready var current_color_rect: ColorRect = $"../CurrentColor"
 
 func _ready():
+	reset_canvas()
+
+func reset_canvas():
+	@warning_ignore("narrowing_conversion")
 	image = Image.create_empty(size.x, size.y, false, Image.FORMAT_RGBA8)
 	image.fill(Color.WHITE)
 	texture = ImageTexture.create_from_image(image)
-
+	
 func _draw():
 	draw_texture(texture, Vector2.ZERO)
 
@@ -115,3 +120,10 @@ func _on_eraser_pressed() -> void:
 func _on_bucket_pressed() -> void:
 	bucket = true
 	eraser = false
+
+func _on_reset_button_pressed() -> void:
+	print("6767")
+	reset_canvas()
+	bucket = false
+	eraser = false
+	current_color = Color.BLACK

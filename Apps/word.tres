@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AppData" load_steps=3 format=3 uid="uid://epw1ry1r5w7b"]
+
+[ext_resource type="Script" uid="uid://ys1jjv8qbfd8" path="res://Scripts/app_data.gd" id="1_gea8l"]
+[ext_resource type="PackedScene" uid="uid://cmanu8kn8apo" path="res://Scenes/word.tscn" id="1_s4quu"]
+
+[resource]
+script = ExtResource("1_gea8l")
+app_name = "Word"
+app_scene = ExtResource("1_s4quu")
+metadata/_custom_type_script = "uid://ys1jjv8qbfd8"

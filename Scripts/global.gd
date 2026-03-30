@@ -1,8 +1,8 @@
 extends Node
 
-var apps := {} # key -> Application
+var apps := {}        # id -> Application
+var app_order: Array[Application] = []
 var assignments_done: int = 0
-
 
 func open_app(app_data: AppData, desktop: Control) -> Application:
 	var id: String = app_data.app_name
@@ -11,16 +11,28 @@ func open_app(app_data: AppData, desktop: Control) -> Application:
 	if apps.has(id):
 		var app = apps[id]
 		app.show()
+		app.reset_app()
+		bring_to_front(app)
 		return app
 	
 	var app = scene.instantiate() as Application
 	desktop.add_child(app, true)
+
+	app_order.append(app)
+	_update_z()
+
 	app.global_position = desktop.get_viewport_rect().size / 2
-	app.z_index = 100
-	app.move_to_front()
-	
 	apps[id] = app
 	return app
+	
+func _update_z():
+	for i in range(app_order.size()):
+		app_order[i].z_index = i
+
+func bring_to_front(app: Application):
+	app_order.erase(app)
+	app_order.append(app)
+	_update_z()
 
 func get_app(app_data: AppData) -> Application:
 	if app_data:

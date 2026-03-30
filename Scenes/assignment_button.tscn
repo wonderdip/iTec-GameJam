@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://nem7ay235ejo"]
 
-[ext_resource type="FontFile" uid="uid://cyj0qvfs1qf4k" path="res://6px-Normal.ttf" id="1_0ju1p"]
+[ext_resource type="FontFile" uid="uid://cfoorayyo12e" path="res://fonts/6px-Normal.ttf" id="1_0ju1p"]
 [ext_resource type="Script" uid="uid://cyw56j3ctkg2" path="res://Scripts/assignment_button.gd" id="2_p3mah"]
 
 [node name="Button" type="Button"]
@@ -21,10 +21,12 @@ theme_override_constants/separation = 2
 
 [node name="AssignmentTitle" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0ju1p")
 theme_override_font_sizes/font_size = 8
 text = "Title"
 
 [node name="Teacher" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0ju1p")
 theme_override_font_sizes/font_size = 8
 text = "Teacher"
