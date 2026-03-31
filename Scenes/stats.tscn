@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bs4jgbm1wcfoq"]
+[gd_scene load_steps=7 format=3 uid="uid://bs4jgbm1wcfoq"]
 
 [ext_resource type="Script" uid="uid://dqenx3ahqvyhy" path="res://Scripts/application.gd" id="1_5wx8j"]
 [ext_resource type="Texture2D" uid="uid://cj5wuw7ujkhpx" path="res://Assets/user.png" id="2_8gyig"]
 [ext_resource type="Theme" uid="uid://bgvcpnl7jyrfv" path="res://default.tres" id="2_orybf"]
+[ext_resource type="Script" uid="uid://lt6sdpen7ys4" path="res://Scripts/stats.gd" id="3_qetgw"]
 [ext_resource type="PackedScene" uid="uid://c4oy47oc4klsf" path="res://Scenes/titlebar_buttons.tscn" id="4_wue6w"]
 [ext_resource type="PackedScene" uid="uid://dx4f5oy7b7uld" path="res://Scenes/window_dragger.tscn" id="9_oduq7"]
 
@@ -25,6 +26,7 @@ offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_orybf")
+script = ExtResource("3_qetgw")
 
 [node name="TextureRect" type="TextureRect" parent="Panel"]
 custom_minimum_size = Vector2(32, 32)
@@ -36,14 +38,6 @@ offset_bottom = 42.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_8gyig")
-
-[node name="TitlebarButtons" parent="Panel" node_paths=PackedStringArray("app") instance=ExtResource("4_wue6w")]
-layout_mode = 0
-offset_left = 132.0
-offset_top = 1.0
-offset_right = 141.0
-offset_bottom = 5.0
-app = NodePath("../..")
 
 [node name="ItekUser" type="Label" parent="Panel"]
 layout_mode = 0
@@ -71,12 +65,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "ASSIGNMENTS DONE:"
 
-[node name="Perfects" type="Label" parent="Panel/VBoxContainer"]
+[node name="Average" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
-text = "PERFECTS:"
+text = "CURRENT AVERAGE:"
 
-[node name="Failed" type="Label" parent="Panel/VBoxContainer"]
+[node name="Perfects" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "FAILED:"
@@ -99,13 +93,13 @@ theme_override_font_sizes/font_size = 8
 text = "0"
 horizontal_alignment = 2
 
-[node name="PerfectsNum" type="Label" parent="Panel/VBoxContainer2"]
+[node name="AverageNum" type="Label" parent="Panel/VBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "0"
 horizontal_alignment = 2
 
-[node name="FailedNum" type="Label" parent="Panel/VBoxContainer2"]
+[node name="PerfectsNum" type="Label" parent="Panel/VBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "0"
@@ -122,5 +116,13 @@ layout_mode = 0
 offset_left = -64.0
 offset_top = -40.0
 offset_right = 56.0
+offset_bottom = -35.0
+app = NodePath("..")
+
+[node name="TitlebarButtons" parent="." node_paths=PackedStringArray("app") instance=ExtResource("4_wue6w")]
+layout_mode = 0
+offset_left = 60.0
+offset_top = -39.0
+offset_right = 69.0
 offset_bottom = -35.0
 app = NodePath("..")

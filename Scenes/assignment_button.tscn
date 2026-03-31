@@ -23,7 +23,7 @@ theme_override_constants/separation = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_0ju1p")
 theme_override_font_sizes/font_size = 8
-text = "Title"
+text = "Title "
 
 [node name="Teacher" type="Label" parent="VBoxContainer"]
 layout_mode = 2

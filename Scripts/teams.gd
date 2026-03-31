@@ -36,7 +36,7 @@ func _on_button_pressed(button: AssignmentButton):
 		details.text = (current_assignment.assignment_details 
 						+"\nMinimum Words: " 
 						+ str(current_assignment.min_words))
-	grade_label.text = (str(current_assignment.grade) + "/10")
+	grade_label.text = (str(int(current_assignment.grade)) + "/100")
 
 func _on_back_button_pressed() -> void:
 	assignment_details.hide()
@@ -80,6 +80,7 @@ func _on_turn_in_button_pressed() -> void:
 	assignment_details.hide()
 	assignment_list.show()
 	current_button.reparent(handed_in_buttons)
+	current_button.add_grade(int(grade))
 	current_button = null
 	Global.assignment_done(current_assignment)
 

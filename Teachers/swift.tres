@@ -8,12 +8,14 @@
 script = ExtResource("1_x4e83")
 assignment_title = "Smiley Face"
 assignment_details = "draw a smiley face"
+min_coverage = 0.2
 metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 
 [sub_resource type="Resource" id="Resource_x4e83"]
 script = ExtResource("1_x4e83")
 assignment_title = "House"
 assignment_details = "Draw a house"
+min_coverage = 0.4
 metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 
 [resource]

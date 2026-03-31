@@ -190,13 +190,13 @@ text = "Turn In"
 
 [node name="Grade" type="Label" parent="Panel/AssignmentDetails"]
 layout_mode = 0
-offset_left = 110.0
+offset_left = 80.0
 offset_top = 8.0
 offset_right = 150.0
 offset_bottom = 28.0
 theme_override_fonts/font = ExtResource("10_a50o7")
-text = "0/10"
-horizontal_alignment = 1
+text = "0/100"
+horizontal_alignment = 2
 
 [node name="WindowDragger" parent="." node_paths=PackedStringArray("app") instance=ExtResource("5_gme0u")]
 layout_mode = 0
