@@ -5,6 +5,7 @@ var app_order: Array[Application] = []
 var used_assignments: Array[AssignmentData] = []
 var graded_assignments: Array[AssignmentData] = []
 var assignments_done: int = 0
+var failed_assignments: int = 0
 var current_average: float = 0
 
 func open_app(app_data: AppData, desktop: Control) -> Application:
@@ -81,3 +82,5 @@ func assignment_done(assignment: AssignmentData):
 		total += a.grade
 	current_average = total / assignments_done
 	
+	if assignment.grade < 60:
+		failed_assignments += 1

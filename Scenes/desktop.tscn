@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://dbcypsrwmp666" path="res://Scripts/desktop_button.gd" id="3_670jt"]
 [ext_resource type="Texture2D" uid="uid://oae7k74ebblw" path="res://Assets/icons/trash.png" id="3_mcvbk"]
 [ext_resource type="Resource" uid="uid://bfs0covscv5xe" path="res://Apps/stats.tres" id="4_ghx37"]
-[ext_resource type="Texture2D" uid="uid://dvfp8njit75v1" path="res://Assets/icons/files.png" id="5_m3b6i"]
+[ext_resource type="Texture2D" uid="uid://cq6p2grvg62xl" path="res://Assets/icons/word.png" id="6_4j8fu"]
 [ext_resource type="Texture2D" uid="uid://b81j7iugdvdx8" path="res://Assets/icons/teams.png" id="6_uegd8"]
 [ext_resource type="Resource" uid="uid://cl7dvc4rnu4x5" path="res://Apps/teams.tres" id="7_1djlj"]
 [ext_resource type="Texture2D" uid="uid://cseqji6dau67t" path="res://Assets/icons/photoshop.png" id="7_fy7rl"]
@@ -58,10 +58,11 @@ texture_normal = ExtResource("3_mcvbk")
 script = ExtResource("3_670jt")
 metadata/_custom_type_script = "uid://dbcypsrwmp666"
 
-[node name="Files" type="TextureButton" parent="HBoxContainer/ColumnOne"]
+[node name="Word" type="TextureButton" parent="HBoxContainer/ColumnOne"]
 layout_mode = 2
-texture_normal = ExtResource("5_m3b6i")
+texture_normal = ExtResource("6_4j8fu")
 script = ExtResource("3_670jt")
+app_data = ExtResource("12_4j8fu")
 metadata/_custom_type_script = "uid://dbcypsrwmp666"
 
 [node name="Teams" type="TextureButton" parent="HBoxContainer/ColumnOne"]
@@ -85,7 +86,6 @@ layout_mode = 2
 layout_mode = 2
 texture_normal = ExtResource("8_m3b6i")
 script = ExtResource("3_670jt")
-app_data = ExtResource("12_4j8fu")
 metadata/_custom_type_script = "uid://dbcypsrwmp666"
 
 [node name="TaskBar" type="HBoxContainer" parent="."]
