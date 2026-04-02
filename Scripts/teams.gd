@@ -17,12 +17,43 @@ var current_teacher: TeacherData = null
 var current_button: AssignmentButton = null
 var current_work = null
 
-# Called when the node enters the scene tree for the first time.
+# add to _ready():
 func _ready() -> void:
+	_spawn_assignment(2)
 	assignment_list.show()
 	assignment_details.hide()
-	for button in button_container.get_children():
+	Global.day_changed.connect(_on_day_changed)
+	Global.week_changed.connect(_on_week_changed)
+
+func _on_day_changed(_day: int) -> void:
+	_spawn_assignment(3)
+
+func _on_week_changed(_week: int) -> void:
+	# Clear handed in list visually for new week
+	for child in handed_in_buttons.get_children():
+		child.queue_free()
+	# Spawn fresh assignments for the new week
+	_spawn_assignment(2)
+
+func _spawn_assignment(amount: int = 1) -> void:
+	for i in amount:
+		var available_teachers = get_parent().desktop.get_node("..").teachers if false else _get_teachers()
+		
+		var available = available_teachers.filter(func(t):
+			return t.assignments.any(func(a): return a not in Global.used_assignments)
+		)
+		
+		if available.is_empty():
+			return
+		
+		var assignment_scene = preload("res://Scenes/assignment_button.tscn")
+		var button = assignment_scene.instantiate() as AssignmentButton
+		button_container.add_child(button)
 		button.pressed.connect(_on_button_pressed.bind(button))
+
+func _get_teachers() -> Array:
+	# Get teachers from the Teams Application node
+	return get_parent().teachers
 
 func _on_button_pressed(button: AssignmentButton):
 	assignment_list.hide()

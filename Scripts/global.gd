@@ -1,5 +1,9 @@
 extends Node
 
+signal day_changed(day: int)
+signal week_changed(week: int)
+signal game_over
+
 var apps := {}        # id -> Application
 var app_order: Array[Application] = []
 var used_assignments: Array[AssignmentData] = []
@@ -7,6 +11,44 @@ var graded_assignments: Array[AssignmentData] = []
 var assignments_done: int = 0
 var failed_assignments: int = 0
 var current_average: float = 0
+var current_week: int = 1
+var current_day: int = 1
+var days_per_week: int = 5
+var day_duration: float = 60.0  # 60 seconds = 1 day (5 min per day)
+var day_timer: float = 0.0
+var week_failed: bool = false
+
+func get_required_average() -> float:
+	return 50.0 + (current_week * 10.0)
+
+func _process(delta: float) -> void:
+	if week_failed:
+		return
+	
+	day_timer += delta
+	if day_timer >= day_duration:
+		day_timer = 0.0
+		_advance_day()
+
+func _advance_day() -> void:
+	if current_day >= days_per_week:
+		_end_week()
+	else:
+		current_day += 1
+		day_changed.emit(current_day)
+
+func _end_week() -> void:
+	if current_average < get_required_average() and assignments_done > 0:
+		week_failed = true
+		game_over.emit()
+	else:
+		current_week += 1
+		current_day = 1
+		current_average = 0
+		assignments_done = 0
+		graded_assignments.clear()
+		week_changed.emit(current_week)
+		day_changed.emit(current_day)
 
 func open_app(app_data: AppData, desktop: Control) -> Application:
 	var id: String = app_data.app_name

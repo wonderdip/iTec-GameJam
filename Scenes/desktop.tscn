@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://u7tonldcdrrn"]
+[gd_scene load_steps=22 format=3 uid="uid://u7tonldcdrrn"]
 
 [ext_resource type="Texture2D" uid="uid://ql1efarbwpxw" path="res://Assets/desktop.png" id="1_hjcrg"]
+[ext_resource type="Script" uid="uid://dt2afrp87y60c" path="res://Scripts/desktop.gd" id="1_wg1g7"]
 [ext_resource type="Texture2D" uid="uid://bh6ks6410hnqj" path="res://Assets/icons/pc.png" id="2_wmsow"]
 [ext_resource type="Script" uid="uid://dbcypsrwmp666" path="res://Scripts/desktop_button.gd" id="3_670jt"]
 [ext_resource type="Texture2D" uid="uid://oae7k74ebblw" path="res://Assets/icons/trash.png" id="3_mcvbk"]
@@ -13,11 +14,13 @@
 [ext_resource type="Resource" uid="uid://c2rn0inmwdp0j" path="res://Apps/photoshop.tres" id="10_3ic4u"]
 [ext_resource type="Texture2D" uid="uid://bt3gi3mr3kxug" path="res://Assets/icons/Minipc.png" id="10_gel6t"]
 [ext_resource type="Script" uid="uid://cg8hx0fp6bghy" path="res://Scripts/taskbar_button.gd" id="11_1djlj"]
-[ext_resource type="Texture2D" uid="uid://b0mqu58yu1f5v" path="res://Assets/icons/Minifiles.png" id="11_j7wpw"]
 [ext_resource type="Texture2D" uid="uid://b8bjmji5lsqjo" path="res://Assets/icons/MiniTeams.png" id="12_1djlj"]
 [ext_resource type="Resource" uid="uid://epw1ry1r5w7b" path="res://Apps/word.tres" id="12_4j8fu"]
 [ext_resource type="Texture2D" uid="uid://gsfyyjl2v7uc" path="res://Assets/icons/MiniPhotoshop.png" id="13_ghx37"]
 [ext_resource type="Texture2D" uid="uid://dp5425hj1fhu6" path="res://Assets/minimize.png" id="14_j7wpw"]
+[ext_resource type="Texture2D" uid="uid://bn8spbtnped4e" path="res://Assets/icons/MiniWord.png" id="15_4j8fu"]
+[ext_resource type="Theme" uid="uid://bgvcpnl7jyrfv" path="res://default.tres" id="19_pfbb1"]
+[ext_resource type="FontFile" uid="uid://cfoorayyo12e" path="res://fonts/6px-Normal.ttf" id="20_wg1g7"]
 
 [node name="Desktop" type="Control"]
 layout_mode = 3
@@ -26,6 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wg1g7")
 
 [node name="Desktop" type="Sprite2D" parent="."]
 position = Vector2(128, 72)
@@ -103,18 +107,19 @@ app_data = ExtResource("4_ghx37")
 taskbar_indicator = NodePath("../../TaskBarIndicator")
 metadata/_custom_type_script = "uid://cg8hx0fp6bghy"
 
-[node name="MiniFiles" type="TextureButton" parent="TaskBar" node_paths=PackedStringArray("taskbar_indicator")]
-layout_mode = 2
-texture_normal = ExtResource("11_j7wpw")
-script = ExtResource("11_1djlj")
-taskbar_indicator = NodePath("../../TaskBarIndicator2")
-metadata/_custom_type_script = "uid://cg8hx0fp6bghy"
-
 [node name="MiniTeams" type="TextureButton" parent="TaskBar" node_paths=PackedStringArray("taskbar_indicator")]
 layout_mode = 2
 texture_normal = ExtResource("12_1djlj")
 script = ExtResource("11_1djlj")
 app_data = ExtResource("7_1djlj")
+taskbar_indicator = NodePath("../../TaskBarIndicator2")
+metadata/_custom_type_script = "uid://cg8hx0fp6bghy"
+
+[node name="MiniWord" type="TextureButton" parent="TaskBar" node_paths=PackedStringArray("taskbar_indicator")]
+layout_mode = 2
+texture_normal = ExtResource("15_4j8fu")
+script = ExtResource("11_1djlj")
+app_data = ExtResource("12_4j8fu")
 taskbar_indicator = NodePath("../../TaskBarIndicator3")
 metadata/_custom_type_script = "uid://cg8hx0fp6bghy"
 
@@ -141,3 +146,39 @@ texture = ExtResource("14_j7wpw")
 [node name="TaskBarIndicator4" type="Sprite2D" parent="."]
 position = Vector2(98, 141)
 texture = ExtResource("14_j7wpw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 129.0
+offset_right = 254.0
+offset_bottom = 141.0
+theme_override_constants/separation = 0
+
+[node name="DayProgress" type="ProgressBar" parent="VBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("20_wg1g7")
+theme_override_font_sizes/font_size = 8
+rounded = true
+show_percentage = false
+
+[node name="WeekLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("20_wg1g7")
+theme_override_font_sizes/font_size = 8
+text = "Week 1 Day 1 | Need: 60% | Avg: 0%"
+horizontal_alignment = 1
+
+[node name="Panel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -134.0
+offset_top = 126.0
+offset_bottom = 144.0
+grow_horizontal = 0
+theme = ExtResource("19_pfbb1")

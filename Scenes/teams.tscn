@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cfjkhmegrrak2"]
+[gd_scene load_steps=12 format=3 uid="uid://cfjkhmegrrak2"]
 
 [ext_resource type="Script" uid="uid://dqenx3ahqvyhy" path="res://Scripts/application.gd" id="1_0f3kd"]
 [ext_resource type="Theme" uid="uid://bgvcpnl7jyrfv" path="res://default.tres" id="2_trs8k"]
 [ext_resource type="Script" uid="uid://dw5suxgavsn1y" path="res://Scripts/teacher_data.gd" id="2_uelq8"]
-[ext_resource type="PackedScene" uid="uid://nem7ay235ejo" path="res://Scenes/assignment_button.tscn" id="3_gme0u"]
 [ext_resource type="Resource" uid="uid://ehds0evghsg5" path="res://Teachers/swift.tres" id="3_ik1aw"]
 [ext_resource type="PackedScene" uid="uid://c4oy47oc4klsf" path="res://Scenes/titlebar_buttons.tscn" id="3_x5o4i"]
 [ext_resource type="Resource" uid="uid://dyeiepp5tvust" path="res://Teachers/hahnel.tres" id="4_6uxok"]
@@ -86,18 +85,6 @@ offset_bottom = 110.0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="Button" parent="Panel/AssignmentList/UpcomingScroller/ButtonContainer" instance=ExtResource("3_gme0u")]
-layout_mode = 2
-
-[node name="Button2" parent="Panel/AssignmentList/UpcomingScroller/ButtonContainer" instance=ExtResource("3_gme0u")]
-layout_mode = 2
-
-[node name="Button3" parent="Panel/AssignmentList/UpcomingScroller/ButtonContainer" instance=ExtResource("3_gme0u")]
-layout_mode = 2
-
-[node name="Button4" parent="Panel/AssignmentList/UpcomingScroller/ButtonContainer" instance=ExtResource("3_gme0u")]
-layout_mode = 2
 
 [node name="HandedInScroller" type="ScrollContainer" parent="Panel/AssignmentList"]
 visible = false
