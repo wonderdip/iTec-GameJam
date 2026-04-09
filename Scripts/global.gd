@@ -14,7 +14,7 @@ var current_average: float = 0
 var current_week: int = 1
 var current_day: int = 1
 var days_per_week: int = 5
-var day_duration: float = 60.0  # 60 seconds = 1 day (5 min per day)
+var day_duration: float = 20.0  # 60 seconds = 1 day (5 min per day)
 var day_timer: float = 0.0
 var week_failed: bool = false
 

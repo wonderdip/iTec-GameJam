@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dw5suxgavsn1y" path="res://Scripts/teacher_data.gd" id="1_h2is8"]
 [ext_resource type="Script" uid="uid://bvvmgegkc1ik6" path="res://Scripts/assignment_data.gd" id="1_i6orl"]
-[ext_resource type="Resource" uid="uid://bfs0covscv5xe" path="res://Apps/stats.tres" id="2_p2t7i"]
+[ext_resource type="Resource" uid="uid://cecukkswaxkge" path="res://Apps/vscode.tres" id="3_i6orl"]
 
 [sub_resource type="Resource" id="Resource_civwu"]
 script = ExtResource("1_i6orl")
@@ -13,6 +13,6 @@ metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 [resource]
 script = ExtResource("1_h2is8")
 name = "Mr. Nadeau"
-specialty = ExtResource("2_p2t7i")
+specialty = ExtResource("3_i6orl")
 assignments = Array[ExtResource("1_i6orl")]([SubResource("Resource_civwu")])
 metadata/_custom_type_script = "uid://dw5suxgavsn1y"

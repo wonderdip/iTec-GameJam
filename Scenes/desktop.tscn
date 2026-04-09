@@ -1,14 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://u7tonldcdrrn"]
+[gd_scene load_steps=24 format=3 uid="uid://u7tonldcdrrn"]
 
 [ext_resource type="Texture2D" uid="uid://ql1efarbwpxw" path="res://Assets/desktop.png" id="1_hjcrg"]
 [ext_resource type="Script" uid="uid://dt2afrp87y60c" path="res://Scripts/desktop.gd" id="1_wg1g7"]
 [ext_resource type="Texture2D" uid="uid://bh6ks6410hnqj" path="res://Assets/icons/pc.png" id="2_wmsow"]
 [ext_resource type="Script" uid="uid://dbcypsrwmp666" path="res://Scripts/desktop_button.gd" id="3_670jt"]
-[ext_resource type="Texture2D" uid="uid://oae7k74ebblw" path="res://Assets/icons/trash.png" id="3_mcvbk"]
 [ext_resource type="Resource" uid="uid://bfs0covscv5xe" path="res://Apps/stats.tres" id="4_ghx37"]
 [ext_resource type="Texture2D" uid="uid://cq6p2grvg62xl" path="res://Assets/icons/word.png" id="6_4j8fu"]
 [ext_resource type="Texture2D" uid="uid://b81j7iugdvdx8" path="res://Assets/icons/teams.png" id="6_uegd8"]
+[ext_resource type="Texture2D" uid="uid://cnneavxiqjqm2" path="res://Assets/icons/vscode.png" id="6_wg1g7"]
 [ext_resource type="Resource" uid="uid://cl7dvc4rnu4x5" path="res://Apps/teams.tres" id="7_1djlj"]
+[ext_resource type="Resource" uid="uid://cecukkswaxkge" path="res://Apps/vscode.tres" id="7_b55dp"]
 [ext_resource type="Texture2D" uid="uid://cseqji6dau67t" path="res://Assets/icons/photoshop.png" id="7_fy7rl"]
 [ext_resource type="Texture2D" uid="uid://cpthdw5a5sxa6" path="res://Assets/icons/settings.png" id="8_m3b6i"]
 [ext_resource type="Resource" uid="uid://c2rn0inmwdp0j" path="res://Apps/photoshop.tres" id="10_3ic4u"]
@@ -20,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://dp5425hj1fhu6" path="res://Assets/minimize.png" id="14_j7wpw"]
 [ext_resource type="Texture2D" uid="uid://bn8spbtnped4e" path="res://Assets/icons/MiniWord.png" id="15_4j8fu"]
 [ext_resource type="Theme" uid="uid://bgvcpnl7jyrfv" path="res://default.tres" id="19_pfbb1"]
+[ext_resource type="Texture2D" uid="uid://dlw3wokfta4wa" path="res://Assets/icons/miniVscode.png" id="19_qpnbv"]
 [ext_resource type="FontFile" uid="uid://cfoorayyo12e" path="res://fonts/6px-Normal.ttf" id="20_wg1g7"]
 
 [node name="Desktop" type="Control"]
@@ -56,10 +58,11 @@ script = ExtResource("3_670jt")
 app_data = ExtResource("4_ghx37")
 metadata/_custom_type_script = "uid://dbcypsrwmp666"
 
-[node name="Trash" type="TextureButton" parent="HBoxContainer/ColumnOne"]
+[node name="VSCode" type="TextureButton" parent="HBoxContainer/ColumnOne"]
 layout_mode = 2
-texture_normal = ExtResource("3_mcvbk")
+texture_normal = ExtResource("6_wg1g7")
 script = ExtResource("3_670jt")
+app_data = ExtResource("7_b55dp")
 metadata/_custom_type_script = "uid://dbcypsrwmp666"
 
 [node name="Word" type="TextureButton" parent="HBoxContainer/ColumnOne"]
@@ -131,6 +134,14 @@ app_data = ExtResource("10_3ic4u")
 taskbar_indicator = NodePath("../../TaskBarIndicator4")
 metadata/_custom_type_script = "uid://cg8hx0fp6bghy"
 
+[node name="MiniVSCode" type="TextureButton" parent="TaskBar" node_paths=PackedStringArray("taskbar_indicator")]
+layout_mode = 2
+texture_normal = ExtResource("19_qpnbv")
+script = ExtResource("11_1djlj")
+app_data = ExtResource("7_b55dp")
+taskbar_indicator = NodePath("../../TaskBarIndicator5")
+metadata/_custom_type_script = "uid://cg8hx0fp6bghy"
+
 [node name="TaskBarIndicator" type="Sprite2D" parent="."]
 position = Vector2(59, 141)
 texture = ExtResource("14_j7wpw")
@@ -145,6 +156,10 @@ texture = ExtResource("14_j7wpw")
 
 [node name="TaskBarIndicator4" type="Sprite2D" parent="."]
 position = Vector2(98, 141)
+texture = ExtResource("14_j7wpw")
+
+[node name="TaskBarIndicator5" type="Sprite2D" parent="."]
+position = Vector2(111, 141)
 texture = ExtResource("14_j7wpw")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]

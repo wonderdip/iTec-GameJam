@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func _update_label() -> void:
 	week_label.text = ("Week " + str(Global.current_week) 
-					  + " Day " + str(Global.current_day)
+					  + " Day " + str(Global.current_day) +"/" + str(Global.days_per_week)
 					  + " | Need: " + str(int(Global.get_required_average()))
 					  + "% | Avg: " + str(roundi(Global.current_average)) + "%")
 

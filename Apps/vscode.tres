@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AppData" load_steps=3 format=3 uid="uid://cecukkswaxkge"]
+
+[ext_resource type="Script" uid="uid://ys1jjv8qbfd8" path="res://Scripts/app_data.gd" id="1_25w0p"]
+[ext_resource type="PackedScene" uid="uid://bl18innm4aqkg" path="res://Scenes/vs_code.tscn" id="1_kf1qx"]
+
+[resource]
+script = ExtResource("1_25w0p")
+app_name = "VSCode"
+app_scene = ExtResource("1_kf1qx")
+metadata/_custom_type_script = "uid://ys1jjv8qbfd8"
