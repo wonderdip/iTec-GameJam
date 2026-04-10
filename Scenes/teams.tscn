@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfjkhmegrrak2"]
+[gd_scene load_steps=13 format=3 uid="uid://cfjkhmegrrak2"]
 
 [ext_resource type="Script" uid="uid://dqenx3ahqvyhy" path="res://Scripts/application.gd" id="1_0f3kd"]
 [ext_resource type="Theme" uid="uid://bgvcpnl7jyrfv" path="res://default.tres" id="2_trs8k"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://c2tmns4f32yxv" path="res://Teachers/nadeau.tres" id="5_a50o7"]
 [ext_resource type="PackedScene" uid="uid://dx4f5oy7b7uld" path="res://Scenes/window_dragger.tscn" id="5_gme0u"]
 [ext_resource type="Script" uid="uid://i20o0mpvq51s" path="res://Scripts/teams.gd" id="7_ik1aw"]
+[ext_resource type="PackedScene" uid="uid://nem7ay235ejo" path="res://Scenes/assignment_button.tscn" id="8_a50o7"]
 [ext_resource type="FontFile" uid="uid://cfoorayyo12e" path="res://fonts/6px-Normal.ttf" id="9_6uxok"]
 [ext_resource type="FontFile" uid="uid://cksshi54c44ta" path="res://fonts/MP16REG.ttf" id="10_a50o7"]
 
@@ -35,8 +36,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_trs8k")
 script = ExtResource("7_ik1aw")
+assignment_scene = ExtResource("8_a50o7")
 
 [node name="AssignmentList" type="Control" parent="Panel"]
+visible = false
 anchors_preset = 0
 offset_right = 208.0
 offset_bottom = 116.0
@@ -100,7 +103,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="AssignmentDetails" type="Control" parent="Panel"]
-visible = false
 anchors_preset = 0
 offset_right = 208.0
 offset_bottom = 116.0
@@ -133,9 +135,11 @@ theme_override_font_sizes/font_size = 16
 text = "Title"
 
 [node name="Details" type="Label" parent="Panel/AssignmentDetails/VBoxContainer"]
+custom_minimum_size = Vector2(94, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Details"
+autowrap_mode = 3
 
 [node name="WorkButton" type="Button" parent="Panel/AssignmentDetails/VBoxContainer"]
 custom_minimum_size = Vector2(0, 9)

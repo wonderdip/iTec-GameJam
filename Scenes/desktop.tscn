@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://u7tonldcdrrn"]
+[gd_scene load_steps=25 format=3 uid="uid://u7tonldcdrrn"]
 
 [ext_resource type="Texture2D" uid="uid://ql1efarbwpxw" path="res://Assets/desktop.png" id="1_hjcrg"]
 [ext_resource type="Script" uid="uid://dt2afrp87y60c" path="res://Scripts/desktop.gd" id="1_wg1g7"]
@@ -23,6 +23,7 @@
 [ext_resource type="Theme" uid="uid://bgvcpnl7jyrfv" path="res://default.tres" id="19_pfbb1"]
 [ext_resource type="Texture2D" uid="uid://dlw3wokfta4wa" path="res://Assets/icons/miniVscode.png" id="19_qpnbv"]
 [ext_resource type="FontFile" uid="uid://cfoorayyo12e" path="res://fonts/6px-Normal.ttf" id="20_wg1g7"]
+[ext_resource type="PackedScene" uid="uid://nbv5dwc6vqvn" path="res://Scenes/end_screen.tscn" id="24_ad33h"]
 
 [node name="Desktop" type="Control"]
 layout_mode = 3
@@ -197,3 +198,6 @@ offset_top = 126.0
 offset_bottom = 144.0
 grow_horizontal = 0
 theme = ExtResource("19_pfbb1")
+
+[node name="EndScreen" parent="." instance=ExtResource("24_ad33h")]
+layout_mode = 1

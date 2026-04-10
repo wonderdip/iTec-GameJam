@@ -6,8 +6,13 @@
 
 [sub_resource type="Resource" id="Resource_civwu"]
 script = ExtResource("1_i6orl")
-assignment_title = "Finish This Code"
-assignment_details = "erdtfgyhuj"
+assignment_title = "Addition function"
+assignment_details = "Fix this code to add numbers instead of multiplying them"
+starter_code = "func add(a, b):
+	return a * b"
+solution_code = "func add(a, b):
+	return a + b"
+check_lines = PackedStringArray("return a + b")
 metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 
 [resource]

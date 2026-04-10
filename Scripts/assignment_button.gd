@@ -26,7 +26,7 @@ func _ready() -> void:
 	assignment = available_assignments.pick_random()
 	Global.used_assignments.append(assignment)
 	
-	teacher_label.text = teacher.name + " " + teacher.specialty.app_name
+	teacher_label.text = teacher.name + " - " + teacher.specialty.app_name
 	title_label.text = assignment.assignment_title + " " + "0/100"
 
 func add_grade(grade: int):

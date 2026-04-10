@@ -6,9 +6,12 @@ class_name AssignmentData
 @export var min_words: int
 @export var min_coverage: float
 
-var grade: float
+# VSCode fields
+@export_multiline var starter_code: String
+@export_multiline var solution_code: String
+@export var check_lines: PackedStringArray
 
-# Saved work state
-var saved_text: String = ""       # for Word
-var saved_image: Image = null     # for Photoshop
+var grade: float
+var saved_text: String = ""
+var saved_image: Image = null
 var has_work: bool = false

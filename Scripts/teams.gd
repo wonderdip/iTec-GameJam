@@ -12,6 +12,7 @@ extends Panel
 @onready var new_button: Button = $AssignmentDetails/VBoxContainer/NewButton
 @onready var grade_label: Label = $AssignmentDetails/Grade
 
+@export var assignment_scene: PackedScene
 var current_assignment: AssignmentData = null
 var current_teacher: TeacherData = null
 var current_button: AssignmentButton = null
@@ -46,7 +47,7 @@ func _spawn_assignment(amount: int = 1) -> void:
 		if available.is_empty():
 			return
 		
-		var assignment_scene = preload("res://Scenes/assignment_button.tscn")
+		
 		var button = assignment_scene.instantiate() as AssignmentButton
 		button_container.add_child(button)
 		button.pressed.connect(_on_button_pressed.bind(button))
@@ -67,7 +68,7 @@ func _on_button_pressed(button: AssignmentButton):
 		details.text = (current_assignment.assignment_details 
 						+"\nMinimum Words: " 
 						+ str(current_assignment.min_words))
-	grade_label.text = (str(int(current_assignment.grade)) + "/100")
+	grade_label.text = (str(roundi(current_assignment.grade)) + "/100")
 
 func _on_back_button_pressed() -> void:
 	assignment_details.hide()
@@ -75,7 +76,6 @@ func _on_back_button_pressed() -> void:
 	current_assignment = null
 
 func _on_new_button_pressed() -> void:
-	# Save any existing work first
 	var existing_id = current_teacher.specialty.app_name + "::" + current_assignment.assignment_title
 	if Global.apps.has(existing_id):
 		Global.apps[existing_id].save_work_to_assignment()
@@ -88,7 +88,10 @@ func _on_new_button_pressed() -> void:
 	app.current_assignment = current_assignment
 	
 	if not current_assignment.has_work:
-		app.reset_app()  # fresh canvas/doc for new work
+		app.reset_app()
+		# Load starter code for fresh VSCode assignments
+		if app.code_edit and current_assignment.starter_code != "":
+			app.code_edit.text = current_assignment.starter_code
 	
 	current_assignment.has_work = true
 	new_button.disabled = true
@@ -102,16 +105,25 @@ func _on_turn_in_button_pressed() -> void:
 		if current_assignment.min_words > 0:
 			var word_count = app.get_word_count()
 			grade = clamp(float(word_count) / current_assignment.min_words * 100.0, 0.0, 100.0)
-		else:
+		elif current_assignment.min_coverage > 0:
 			var coverage = app.get_canvas_coverage()
 			grade = clamp(coverage / current_assignment.min_coverage * 100.0, 0.0, 100.0)
+		elif current_assignment.check_lines.size() > 0:
+			# Grade based on how many required lines are present
+			var code = app.get_code()
+			var correct := 0
+			for required_line in current_assignment.check_lines:
+				for line in code.split("\n"):
+					if line.strip_edges() == required_line.strip_edges():
+						correct += 1
+						break
+			grade = clamp(float(correct) / current_assignment.check_lines.size() * 100.0, 0.0, 100.0)
 	
 	current_assignment.grade = grade
-	
 	assignment_details.hide()
 	assignment_list.show()
 	current_button.reparent(handed_in_buttons)
-	current_button.add_grade(int(grade))
+	current_button.add_grade(roundi(grade))
 	current_button = null
 	Global.assignment_done(current_assignment)
 

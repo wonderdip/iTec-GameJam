@@ -38,7 +38,7 @@ func _advance_day() -> void:
 		day_changed.emit(current_day)
 
 func _end_week() -> void:
-	if current_average < get_required_average() and assignments_done > 0:
+	if current_average < get_required_average():
 		week_failed = true
 		game_over.emit()
 	else:

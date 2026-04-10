@@ -1,14 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl18innm4aqkg"]
+[gd_scene load_steps=8 format=3 uid="uid://bl18innm4aqkg"]
 
 [ext_resource type="Script" uid="uid://dqenx3ahqvyhy" path="res://Scripts/application.gd" id="1_cbq72"]
 [ext_resource type="Theme" uid="uid://bgvcpnl7jyrfv" path="res://default.tres" id="2_fcmys"]
 [ext_resource type="PackedScene" uid="uid://dx4f5oy7b7uld" path="res://Scenes/window_dragger.tscn" id="3_fho1d"]
+[ext_resource type="Script" uid="uid://btis7smx1u5f" path="res://Scripts/vscode.gd" id="3_iv8bq"]
+[ext_resource type="FontFile" uid="uid://cfoorayyo12e" path="res://fonts/6px-Normal.ttf" id="4_bvdrp"]
 [ext_resource type="PackedScene" uid="uid://c4oy47oc4klsf" path="res://Scenes/titlebar_buttons.tscn" id="4_iv8bq"]
+[ext_resource type="FontFile" uid="uid://cksshi54c44ta" path="res://fonts/MP16REG.ttf" id="4_kli6o"]
 
-[node name="VSCode" type="Control"]
+[node name="VSCode" type="Control" node_paths=PackedStringArray("code_edit")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_cbq72")
+code_edit = NodePath("Panel/Control/VBoxContainer/CodeEdit")
 metadata/_custom_type_script = "uid://dqenx3ahqvyhy"
 
 [node name="Panel" type="Panel" parent="."]
@@ -16,19 +20,60 @@ layout_mode = 0
 offset_left = -82.0
 offset_top = -61.0
 offset_right = 82.0
-offset_bottom = 61.0
+offset_bottom = 62.0
 theme = ExtResource("2_fcmys")
+script = ExtResource("3_iv8bq")
 
-[node name="WindowDragger" parent="." instance=ExtResource("3_fho1d")]
+[node name="Control" type="Control" parent="Panel"]
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 9.0
+offset_right = 158.0
+offset_bottom = 117.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CodeEdit" type="CodeEdit" parent="Panel/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_kli6o")
+theme_override_font_sizes/font_size = 10
+placeholder_text = "Code..."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="RunButton" type="Button" parent="Panel/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_bvdrp")
+theme_override_font_sizes/font_size = 8
+text = "Run Code"
+
+[node name="Output" type="Label" parent="Panel/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Output..."
+
+[node name="WindowDragger" parent="." node_paths=PackedStringArray("app") instance=ExtResource("3_fho1d")]
 layout_mode = 0
 offset_left = -79.0
 offset_top = -61.0
 offset_right = 68.0
 offset_bottom = -56.0
+app = NodePath("..")
 
-[node name="TitleBarButtons" parent="." instance=ExtResource("4_iv8bq")]
+[node name="TitleBarButtons" parent="." node_paths=PackedStringArray("app") instance=ExtResource("4_iv8bq")]
 layout_mode = 0
 offset_left = 70.0
 offset_top = -60.0
 offset_right = 79.0
 offset_bottom = -56.0
+app = NodePath("..")
+
+[connection signal="pressed" from="Panel/Control/VBoxContainer/HBoxContainer/RunButton" to="Panel" method="_on_run_button_pressed"]
