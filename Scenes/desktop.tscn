@@ -200,4 +200,5 @@ grow_horizontal = 0
 theme = ExtResource("19_pfbb1")
 
 [node name="EndScreen" parent="." instance=ExtResource("24_ad33h")]
+visible = false
 layout_mode = 1

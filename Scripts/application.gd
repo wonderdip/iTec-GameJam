@@ -9,6 +9,8 @@ var current_assignment: AssignmentData = null  # which assignment this instance 
 @export var canvas: Canvas
 @export var text_edit: TextEdit
 @export var code_edit: CodeEdit
+@export var file_name: Label
+
 var desktop: Control
 
 func _ready() -> void:
@@ -26,7 +28,9 @@ func reset_app():
 		text_edit.clear()
 	if code_edit:
 		code_edit.text = ""
-
+	if file_name:
+		file_name.text = ""
+		
 func save_work_to_assignment():
 	if not current_assignment:
 		return
@@ -39,7 +43,7 @@ func save_work_to_assignment():
 	if code_edit:
 		current_assignment.saved_text = code_edit.text
 		current_assignment.has_work = code_edit.text.strip_edges() != ""
-
+		
 func load_work_from_assignment():
 	if not current_assignment:
 		return
@@ -54,7 +58,9 @@ func load_work_from_assignment():
 			code_edit.text = current_assignment.saved_text
 		elif current_assignment.starter_code != "":
 			code_edit.text = current_assignment.starter_code
-
+	if file_name:
+		file_name.text = current_assignment.file_name
+		
 func get_word_count() -> int:
 	if not text_edit:
 		return 0

@@ -8,6 +8,7 @@
 script = ExtResource("1_i6orl")
 assignment_title = "Addition function"
 assignment_details = "Fix this code to add numbers instead of multiplying them"
+file_name = "addition.gd"
 starter_code = "func add(a, b):
 	return a * b"
 solution_code = "func add(a, b):

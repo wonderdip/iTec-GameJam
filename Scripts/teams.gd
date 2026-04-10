@@ -92,7 +92,8 @@ func _on_new_button_pressed() -> void:
 		# Load starter code for fresh VSCode assignments
 		if app.code_edit and current_assignment.starter_code != "":
 			app.code_edit.text = current_assignment.starter_code
-	
+			app.file_name.text = current_assignment.file_name
+			
 	current_assignment.has_work = true
 	new_button.disabled = true
 	

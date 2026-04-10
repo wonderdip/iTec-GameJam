@@ -7,6 +7,7 @@ class_name AssignmentData
 @export var min_coverage: float
 
 # VSCode fields
+@export var file_name: String = ""
 @export_multiline var starter_code: String
 @export_multiline var solution_code: String
 @export var check_lines: PackedStringArray

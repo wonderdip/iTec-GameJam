@@ -8,11 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://c4oy47oc4klsf" path="res://Scenes/titlebar_buttons.tscn" id="4_iv8bq"]
 [ext_resource type="FontFile" uid="uid://cksshi54c44ta" path="res://fonts/MP16REG.ttf" id="4_kli6o"]
 
-[node name="VSCode" type="Control" node_paths=PackedStringArray("code_edit")]
+[node name="VSCode" type="Control" node_paths=PackedStringArray("code_edit", "file_name")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_cbq72")
 code_edit = NodePath("Panel/Control/VBoxContainer/CodeEdit")
+file_name = NodePath("Panel/Control/VBoxContainer/Filename")
 metadata/_custom_type_script = "uid://dqenx3ahqvyhy"
 
 [node name="Panel" type="Panel" parent="."]
@@ -38,6 +39,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Filename" type="Label" parent="Panel/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Filename"
 
 [node name="CodeEdit" type="CodeEdit" parent="Panel/Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)

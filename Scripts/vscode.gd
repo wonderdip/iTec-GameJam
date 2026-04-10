@@ -3,7 +3,9 @@ extends Panel
 @onready var code_edit: CodeEdit = $Control/VBoxContainer/CodeEdit
 @onready var run_button: Button = $Control/VBoxContainer/HBoxContainer/RunButton
 @onready var output_label: Label = $Control/VBoxContainer/HBoxContainer/Output
-
+@onready var filename: Label = $Control/VBoxContainer/Filename
+	
+	
 func _on_run_button_pressed() -> void:
 	var code = code_edit.text.strip_edges()
 	if code == "":
