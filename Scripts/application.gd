@@ -14,6 +14,11 @@ var current_assignment: AssignmentData = null  # which assignment this instance 
 var desktop: Control
 
 func _ready() -> void:
+	pivot_offset.x = size.x / 2
+	pivot_offset.y = size.y
+	var tween = create_tween()
+	scale = Vector2(0.1, 0.1)
+	tween.tween_property(self, "scale", Vector2(1, 1), 0.25)
 	desktop = get_parent_control()
 
 func get_code() -> String:

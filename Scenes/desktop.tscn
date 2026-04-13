@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://u7tonldcdrrn"]
+[gd_scene load_steps=24 format=3 uid="uid://u7tonldcdrrn"]
 
 [ext_resource type="Texture2D" uid="uid://ql1efarbwpxw" path="res://Assets/desktop.png" id="1_hjcrg"]
 [ext_resource type="Script" uid="uid://dt2afrp87y60c" path="res://Scripts/desktop.gd" id="1_wg1g7"]
@@ -20,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://gsfyyjl2v7uc" path="res://Assets/icons/MiniPhotoshop.png" id="13_ghx37"]
 [ext_resource type="Texture2D" uid="uid://dp5425hj1fhu6" path="res://Assets/minimize.png" id="14_j7wpw"]
 [ext_resource type="Texture2D" uid="uid://bn8spbtnped4e" path="res://Assets/icons/MiniWord.png" id="15_4j8fu"]
-[ext_resource type="Theme" uid="uid://bgvcpnl7jyrfv" path="res://default.tres" id="19_pfbb1"]
 [ext_resource type="Texture2D" uid="uid://dlw3wokfta4wa" path="res://Assets/icons/miniVscode.png" id="19_qpnbv"]
 [ext_resource type="FontFile" uid="uid://cfoorayyo12e" path="res://fonts/6px-Normal.ttf" id="20_wg1g7"]
 [ext_resource type="PackedScene" uid="uid://nbv5dwc6vqvn" path="res://Scenes/end_screen.tscn" id="24_ad33h"]
@@ -186,18 +185,6 @@ theme_override_fonts/font = ExtResource("20_wg1g7")
 theme_override_font_sizes/font_size = 8
 text = "Week 1 Day 1 | Need: 60% | Avg: 0%"
 horizontal_alignment = 1
-
-[node name="Panel" type="PanelContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -134.0
-offset_top = 126.0
-offset_bottom = 144.0
-grow_horizontal = 0
-theme = ExtResource("19_pfbb1")
 
 [node name="EndScreen" parent="." instance=ExtResource("24_ad33h")]
 visible = false

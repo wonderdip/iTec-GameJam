@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://nbv5dwc6vqvn"]
+[gd_scene load_steps=11 format=3 uid="uid://nbv5dwc6vqvn"]
 
 [ext_resource type="Script" uid="uid://b07vu644o5oep" path="res://Scripts/end_screen.gd" id="1_f2mtv"]
 [ext_resource type="StyleBox" uid="uid://dvf0guatg0lsm" path="res://white_panel.tres" id="2_1gwaw"]
-[ext_resource type="PackedScene" uid="uid://cg1alr0exg5mq" path="res://Scenes/start_screen.tscn" id="2_gdxnu"]
 [ext_resource type="FontFile" uid="uid://cksshi54c44ta" path="res://fonts/MP16REG.ttf" id="3_bhpww"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bhpww"]
@@ -26,6 +25,7 @@ grow_end = 0.0
 bg_color = Color(0.82605994, 0.82606006, 0.8260599, 1)
 
 [node name="EndScreen" type="Control"]
+top_level = true
 z_index = 200
 layout_mode = 3
 anchors_preset = 15
@@ -33,8 +33,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(128, 144)
 script = ExtResource("1_f2mtv")
-start_scene = ExtResource("2_gdxnu")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -275,6 +275,7 @@ text = "Due to your TERRIBLE grades this year () in the iTek program. You have b
 Sincerely,
 Mr. Broad, iTek Coordinator"
 autowrap_mode = 3
+visible_characters_behavior = 1
 
 [node name="HomeButton" type="Button" parent="Panel"]
 layout_mode = 0

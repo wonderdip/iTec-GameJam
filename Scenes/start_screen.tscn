@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cg1alr0exg5mq"]
+[gd_scene load_steps=8 format=3 uid="uid://cg1alr0exg5mq"]
 
 [ext_resource type="Texture2D" uid="uid://ch2mls51an2p7" path="res://Assets/itek_bg.png" id="1_60ddj"]
 [ext_resource type="Script" uid="uid://dede874am0y2g" path="res://Scripts/start_screen.gd" id="1_mtlf8"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://u7tonldcdrrn" path="res://Scenes/desktop.tscn" id="2_nqnrp"]
 [ext_resource type="FontFile" uid="uid://cksshi54c44ta" path="res://fonts/MP16REG.ttf" id="3_mtlf8"]
 [ext_resource type="FontFile" uid="uid://cfoorayyo12e" path="res://fonts/6px-Normal.ttf" id="5_nqnrp"]
+
+[sub_resource type="Theme" id="Theme_nqnrp"]
+Label/font_sizes/font_size = 8
+Label/fonts/font = ExtResource("3_mtlf8")
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -41,21 +45,28 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.1882353)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UsernameScreen"]
-layout_mode = 0
-offset_left = 90.0
-offset_top = 16.0
-offset_right = 242.0
-offset_bottom = 114.0
+[node name="UserContainer" type="VBoxContainer" parent="UsernameScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -54.0
+offset_right = 76.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="UsernameScreen/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="UsernameScreen/UserContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_5e717")
 stretch_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="UsernameScreen/VBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="UsernameScreen/UserContainer"]
 custom_minimum_size = Vector2(117, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -63,11 +74,27 @@ size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("3_mtlf8")
 theme_override_font_sizes/font_size = 8
 placeholder_text = "username..."
+max_length = 12
+
+[node name="LeaderBoardButton" type="Button" parent="UsernameScreen"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 108.0
+offset_right = 153.0
+offset_bottom = 126.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_mtlf8")
+theme_override_font_sizes/font_size = 8
+text = "Leaderboard"
 
 [node name="LeaderboardContainer" type="VBoxContainer" parent="UsernameScreen"]
+visible = false
 layout_mode = 0
-offset_right = 96.0
+offset_left = 4.0
+offset_right = 256.0
 offset_bottom = 40.0
+theme = SubResource("Theme_nqnrp")
 
 [node name="Intro" type="Control" parent="."]
 visible = false
@@ -102,12 +129,24 @@ horizontal_alignment = 1
 autowrap_mode = 3
 visible_characters_behavior = 1
 
-[node name="NextButton" type="Button" parent="Intro/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Intro/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="NextButton" type="Button" parent="Intro/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("5_nqnrp")
 theme_override_font_sizes/font_size = 8
 text = "Next"
 
-[connection signal="text_submitted" from="UsernameScreen/VBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
-[connection signal="pressed" from="Intro/VBoxContainer/NextButton" to="." method="_on_next_button_pressed"]
+[node name="SkipButton" type="Button" parent="Intro/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_nqnrp")
+theme_override_font_sizes/font_size = 8
+text = "Skip"
+
+[connection signal="text_submitted" from="UsernameScreen/UserContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="UsernameScreen/LeaderBoardButton" to="." method="_on_leader_board_button_pressed"]
+[connection signal="pressed" from="Intro/VBoxContainer/HBoxContainer/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="Intro/VBoxContainer/HBoxContainer/SkipButton" to="." method="_on_skip_button_pressed"]

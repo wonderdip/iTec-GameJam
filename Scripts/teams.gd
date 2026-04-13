@@ -27,7 +27,7 @@ func _ready() -> void:
 	Global.week_changed.connect(_on_week_changed)
 
 func _on_day_changed(_day: int) -> void:
-	_spawn_assignment(3)
+	_spawn_assignment(2)
 
 func _on_week_changed(_week: int) -> void:
 	# Clear handed in list visually for new week

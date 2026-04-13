@@ -14,7 +14,7 @@ var current_average: float = 0
 var current_week: int = 1
 var current_day: int = 1
 var days_per_week: int = 5
-var day_duration: float = 20.0
+var day_duration: float = 25.0
 var day_timer: float = 0.0
 var week_failed: bool = false
 var game_running: bool = false
@@ -79,24 +79,21 @@ func _process(delta: float) -> void:
 		_advance_day()
 
 func _advance_day() -> void:
-	if current_day >= days_per_week:
+	if current_average < get_required_average():
+		week_failed = true
+		game_over.emit()
+	elif current_day >= days_per_week:
 		_end_week()
 	else:
 		current_day += 1
 		day_changed.emit(current_day)
 
 func _end_week() -> void:
-	if current_average < get_required_average():
-		week_failed = true
-		game_over.emit()
-	else:
-		current_week += 1
-		current_day = 1
-		current_average = 0
-		assignments_done = 0
-		graded_assignments.clear()
-		week_changed.emit(current_week)
-		day_changed.emit(current_day)
+	current_week += 1
+	current_day = 1
+	current_average = 0
+	week_changed.emit(current_week)
+	day_changed.emit(current_day)
 
 func open_app(app_data: AppData, desktop: Control) -> Application:
 	var id: String = app_data.app_name

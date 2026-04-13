@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TeacherData" load_steps=5 format=3 uid="uid://dyeiepp5tvust"]
+[gd_resource type="Resource" script_class="TeacherData" load_steps=9 format=3 uid="uid://dyeiepp5tvust"]
 
 [ext_resource type="Script" uid="uid://bvvmgegkc1ik6" path="res://Scripts/assignment_data.gd" id="1_edsqm"]
 [ext_resource type="Script" uid="uid://dw5suxgavsn1y" path="res://Scripts/teacher_data.gd" id="1_u52cg"]
@@ -7,13 +7,42 @@
 [sub_resource type="Resource" id="Resource_paaun"]
 script = ExtResource("1_edsqm")
 assignment_title = "AI Essay"
-assignment_details = "Write 6 or 7 Essays about AI"
-min_words = 50
+assignment_details = "Write an Essay about AI in school"
+min_words = 10
+metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
+
+[sub_resource type="Resource" id="Resource_edsqm"]
+script = ExtResource("1_edsqm")
+assignment_title = "Speaker"
+assignment_details = "Answer this question:
+	1: What is a Speaker"
+min_words = 10
+metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
+
+[sub_resource type="Resource" id="Resource_hmm0t"]
+script = ExtResource("1_edsqm")
+assignment_title = "Bird House Research"
+assignment_details = "Whats your favourite bird?"
+min_words = 1
+metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
+
+[sub_resource type="Resource" id="Resource_nq7so"]
+script = ExtResource("1_edsqm")
+assignment_title = "Screen Time"
+assignment_details = "Whats your screen time"
+min_words = 2
+metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
+
+[sub_resource type="Resource" id="Resource_b14c3"]
+script = ExtResource("1_edsqm")
+assignment_title = "Owl Shit"
+assignment_details = "Imagine you disected some owl shit and write what you found"
+min_words = 5
 metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 
 [resource]
 script = ExtResource("1_u52cg")
 name = "Mr. Hahnel"
 specialty = ExtResource("3_edsqm")
-assignments = Array[ExtResource("1_edsqm")]([SubResource("Resource_paaun")])
+assignments = Array[ExtResource("1_edsqm")]([SubResource("Resource_paaun"), SubResource("Resource_edsqm"), SubResource("Resource_hmm0t"), SubResource("Resource_nq7so"), SubResource("Resource_b14c3")])
 metadata/_custom_type_script = "uid://dw5suxgavsn1y"

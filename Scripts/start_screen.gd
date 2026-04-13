@@ -3,8 +3,9 @@ extends Control
 @onready var username_screen: Control = $UsernameScreen
 @onready var intro: Control = $Intro
 @onready var label: Label = $Intro/VBoxContainer/Label
-@onready var next_button: Button = $Intro/VBoxContainer/NextButton
+@onready var next_button: Button = $Intro/VBoxContainer/HBoxContainer/NextButton
 @onready var leaderboard_container: VBoxContainer = $UsernameScreen/LeaderboardContainer
+@onready var user_container: VBoxContainer = $UsernameScreen/UserContainer
 
 @export var intro_texts: Array[String] = [
 	"Welcome to the iTek Simulator!",
@@ -21,6 +22,7 @@ var is_typing: bool = false
 
 func _ready() -> void:
 	username_screen.hide()
+	leaderboard_container.hide()
 	intro.show()
 	display_text()
 
@@ -30,9 +32,10 @@ func show_username_screen() -> void:
 	_populate_leaderboard()
 
 func _populate_leaderboard() -> void:
-	# Clear old entries
 	for child in leaderboard_container.get_children():
 		child.queue_free()
+	
+	_add_leaderboard_row("Player", "Average", "Reached")
 	
 	if Global.leaderboard.is_empty():
 		var empty_label = Label.new()
@@ -40,12 +43,6 @@ func _populate_leaderboard() -> void:
 		leaderboard_container.add_child(empty_label)
 		return
 	
-	# Header
-	var header = Label.new()
-	header.text = "%-20s %8s %12s %20s" % ["Player", "Average", "Reached", "Time"]
-	leaderboard_container.add_child(header)
-	
-	# Sort by week then day descending (furthest run on top)
 	var sorted = Global.leaderboard.duplicate()
 	sorted.sort_custom(func(a, b):
 		if a.week != b.week:
@@ -54,14 +51,27 @@ func _populate_leaderboard() -> void:
 	)
 	
 	for entry in sorted:
-		var row = Label.new()
-		row.text = "%-20s %7s%% %7s %20s" % [
+		_add_leaderboard_row(
 			entry.username,
-			str(roundi(entry.average)),
-			"W%d D%d" % [entry.week, entry.day],
-			entry.timestamp
-		]
-		leaderboard_container.add_child(row)
+			str(roundi(entry.average)) + "%",
+			"Week %d Day %d" % [entry.week, entry.day]
+		)
+
+func _add_leaderboard_row(player: String, average: String, reached: String) -> void:
+	var row = HBoxContainer.new()
+	row.add_theme_constant_override("separation", 0)
+	
+	var cols = [player, average, reached]
+	var sizes = [90, 40, 90]
+	
+	for i in cols.size():
+		var player_label = Label.new()
+		player_label.text = cols[i]
+		player_label.custom_minimum_size.x = sizes[i]
+		player_label.clip_text = true
+		row.add_child(player_label)
+	
+	leaderboard_container.add_child(row)
 
 func display_text() -> void:
 	if text_index < intro_texts.size():
@@ -73,7 +83,7 @@ func type_text(full_text: String) -> void:
 	label.text = full_text
 	label.visible_characters = 0
 	for i in full_text.length():
-		if not is_typing:  # was skipped
+		if not is_typing:
 			break
 		label.visible_characters = i + 1
 		await get_tree().create_timer(letter_delay).timeout
@@ -100,3 +110,14 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 		return
 	Global.start_game(new_text)
 	get_tree().change_scene_to_packed(desktop_scene)
+
+func _on_skip_button_pressed() -> void:
+	show_username_screen()
+
+func _on_leader_board_button_pressed() -> void:
+	if leaderboard_container.visible:
+		leaderboard_container.hide()
+		user_container.show()
+	else:
+		leaderboard_container.show()
+		user_container.hide()
