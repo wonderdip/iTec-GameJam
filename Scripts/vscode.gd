@@ -4,7 +4,8 @@ extends Panel
 @onready var run_button: Button = $Control/VBoxContainer/HBoxContainer/RunButton
 @onready var output_label: Label = $Control/VBoxContainer/HBoxContainer/Output
 @onready var filename: Label = $Control/VBoxContainer/Filename
-	
+
+@export var app: Application
 	
 func _on_run_button_pressed() -> void:
 	var code = code_edit.text.strip_edges()
@@ -12,15 +13,12 @@ func _on_run_button_pressed() -> void:
 		output_label.text = "No code to run."
 		return
 	
-	# Check against the assignment's required lines
-	var app = get_parent() as Application
 	if not app or not app.current_assignment:
 		output_label.text = "> No assignment loaded."
 		return
 	
 	var assignment = app.current_assignment
 	var all_correct := true
-	var missing := ""
 	
 	for required_line in assignment.check_lines:
 		var found := false
@@ -30,10 +28,14 @@ func _on_run_button_pressed() -> void:
 				break
 		if not found:
 			all_correct = false
-			missing = required_line
 			break
 	
 	if all_correct:
-		output_label.text = "> Code ran successfully!"
+		output_label.text = "> Successful!"
 	else:
-		output_label.text = "> Error: missing or incorrect line"
+		output_label.text = "> Error!"
+
+func _on_button_pressed() -> void:
+	#reset button
+	var assignment : AssignmentData = app.current_assignment
+	code_edit.text = assignment.starter_code

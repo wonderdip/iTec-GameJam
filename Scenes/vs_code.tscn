@@ -16,7 +16,7 @@ code_edit = NodePath("Panel/Control/VBoxContainer/CodeEdit")
 file_name = NodePath("Panel/Control/VBoxContainer/Filename")
 metadata/_custom_type_script = "uid://dqenx3ahqvyhy"
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." node_paths=PackedStringArray("app")]
 layout_mode = 0
 offset_left = -82.0
 offset_top = -61.0
@@ -24,6 +24,7 @@ offset_right = 82.0
 offset_bottom = 62.0
 theme = ExtResource("2_fcmys")
 script = ExtResource("3_iv8bq")
+app = NodePath("..")
 
 [node name="Control" type="Control" parent="Panel"]
 anchors_preset = 0
@@ -61,6 +62,12 @@ theme_override_fonts/font = ExtResource("4_bvdrp")
 theme_override_font_sizes/font_size = 8
 text = "Run Code"
 
+[node name="ResetButton" type="Button" parent="Panel/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_bvdrp")
+theme_override_font_sizes/font_size = 8
+text = "Reset"
+
 [node name="Output" type="Label" parent="Panel/Control/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
@@ -83,3 +90,4 @@ offset_bottom = -56.0
 app = NodePath("..")
 
 [connection signal="pressed" from="Panel/Control/VBoxContainer/HBoxContainer/RunButton" to="Panel" method="_on_run_button_pressed"]
+[connection signal="pressed" from="Panel/Control/VBoxContainer/HBoxContainer/ResetButton" to="Panel" method="_on_button_pressed"]

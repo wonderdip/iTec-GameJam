@@ -1,8 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://nbv5dwc6vqvn"]
+[gd_scene load_steps=12 format=3 uid="uid://nbv5dwc6vqvn"]
 
 [ext_resource type="Script" uid="uid://b07vu644o5oep" path="res://Scripts/end_screen.gd" id="1_f2mtv"]
+[ext_resource type="StyleBox" uid="uid://dvf0guatg0lsm" path="res://white_panel.tres" id="2_1gwaw"]
+[ext_resource type="PackedScene" uid="uid://cg1alr0exg5mq" path="res://Scenes/start_screen.tscn" id="2_gdxnu"]
+[ext_resource type="FontFile" uid="uid://cksshi54c44ta" path="res://fonts/MP16REG.ttf" id="3_bhpww"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bhpww"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_gdxnu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gdxnu"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_bhpww"]
+grow_begin = 2.0
+vertical = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdxnu"]
+bg_color = Color(0.7791344, 0.8295428, 0.9310061, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_8yanq"]
+grow_begin = 0.0
+grow_end = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bhpww"]
+bg_color = Color(0.82605994, 0.82606006, 0.8260599, 1)
 
 [node name="EndScreen" type="Control"]
+z_index = 200
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,25 +34,256 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_f2mtv")
+start_scene = ExtResource("2_gdxnu")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 144.0
+theme_override_styles/panel = ExtResource("2_1gwaw")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "YOU DIDNT MAKE IT,
-AFTER GETTING ONE TOO MANY PROBATIONS YOU GOT KICKED OUT"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 4.0
+offset_right = 254.0
+offset_bottom = 142.0
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+color = Color(0.003921569, 0.47058824, 0.83137256, 1)
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ColorRect"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 42.0
+offset_bottom = 12.0
+theme_override_fonts/font = ExtResource("3_bhpww")
+theme_override_font_sizes/font_size = 10
+text = "Outlook"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="NewMessageLabel" type="Label" parent="Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bhpww")
+theme_override_font_sizes/font_size = 10
+text = " + New Message"
+
+[node name="VSeparator" type="VSeparator" parent="Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 24
+theme_override_styles/separator = SubResource("StyleBoxEmpty_bhpww")
+
+[node name="DeleteLabel" type="Label" parent="Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bhpww")
+theme_override_font_sizes/font_size = 10
+text = "Delete"
+
+[node name="ArchiveLabel" type="Label" parent="Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bhpww")
+theme_override_font_sizes/font_size = 10
+text = "Archive"
+
+[node name="JunkLabel" type="Label" parent="Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bhpww")
+theme_override_font_sizes/font_size = 10
+text = "Junk"
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 3
+theme_override_styles/separator = SubResource("StyleBoxLine_gdxnu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="VSeparator2" type="VSeparator" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_gdxnu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="InboxLabel" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bhpww")
+theme_override_font_sizes/font_size = 10
+text = "Inbox     1"
+
+[node name="DraftsLabel" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bhpww")
+theme_override_font_sizes/font_size = 10
+text = "Drafts"
+
+[node name="TrashLabel" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bhpww")
+theme_override_font_sizes/font_size = 10
+text = "Trash"
+
+[node name="VSeparator" type="VSeparator" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxLine_bhpww")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Control" type="Control" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gdxnu")
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer2/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("3_bhpww")
+theme_override_font_sizes/font_size = 6
+text = " Mr. Broad
+  Probation"
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 1
+theme_override_styles/separator = SubResource("StyleBoxLine_8yanq")
+
+[node name="Panel2" type="Panel" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bhpww")
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer2/Panel2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("3_bhpww")
+theme_override_font_sizes/font_size = 6
+text = " Ms. Saha
+  Phone ban"
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 1
+theme_override_styles/separator = SubResource("StyleBoxLine_8yanq")
+
+[node name="Panel3" type="Panel" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bhpww")
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer2/Panel3"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("3_bhpww")
+theme_override_font_sizes/font_size = 6
+text = " Mr. Broad
+  iTek Trip"
+
+[node name="HSeparator3" type="HSeparator" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 1
+theme_override_styles/separator = SubResource("StyleBoxLine_8yanq")
+
+[node name="Panel4" type="Panel" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bhpww")
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer2/Panel4"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("3_bhpww")
+theme_override_font_sizes/font_size = 6
+text = " Mr. Black
+  Upcoming Test"
+
+[node name="VSeparator3" type="VSeparator" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxLine_bhpww")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Header" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bhpww")
+theme_override_font_sizes/font_size = 10
+text = "Mr. Broad"
+
+[node name="DateLabel" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.288518, 0.28851798, 0.28851798, 1)
+theme_override_fonts/font = ExtResource("3_bhpww")
+theme_override_font_sizes/font_size = 8
+text = "Date"
+
+[node name="BodyText" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(147, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bhpww")
+theme_override_font_sizes/font_size = 8
+text = "Due to your TERRIBLE grades this year () in the iTek program. You have been put on probation indefinetly.
+
+Sincerely,
+Mr. Broad, iTek Coordinator"
 autowrap_mode = 3
+
+[node name="HomeButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 112.0
+offset_right = 250.0
+offset_bottom = 129.0
+theme_override_fonts/font = ExtResource("3_bhpww")
+theme_override_font_sizes/font_size = 7
+text = "Exit to home"
+
+[connection signal="pressed" from="Panel/HomeButton" to="." method="_on_home_button_pressed"]
