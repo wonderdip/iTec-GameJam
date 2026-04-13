@@ -8,6 +8,7 @@
 script = ExtResource("1_edsqm")
 assignment_title = "AI Essay"
 assignment_details = "Write an Essay about AI in school"
+app = ExtResource("3_edsqm")
 min_words = 10
 metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 
@@ -16,6 +17,7 @@ script = ExtResource("1_edsqm")
 assignment_title = "Speaker"
 assignment_details = "Answer this question:
 	1: What is a Speaker"
+app = ExtResource("3_edsqm")
 min_words = 10
 metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 
@@ -23,6 +25,7 @@ metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 script = ExtResource("1_edsqm")
 assignment_title = "Bird House Research"
 assignment_details = "Whats your favourite bird?"
+app = ExtResource("3_edsqm")
 min_words = 1
 metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 
@@ -30,6 +33,7 @@ metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 script = ExtResource("1_edsqm")
 assignment_title = "Screen Time"
 assignment_details = "Whats your screen time"
+app = ExtResource("3_edsqm")
 min_words = 2
 metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 
@@ -37,12 +41,12 @@ metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 script = ExtResource("1_edsqm")
 assignment_title = "Owl Shit"
 assignment_details = "Imagine you disected some owl shit and write what you found"
+app = ExtResource("3_edsqm")
 min_words = 5
 metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 
 [resource]
 script = ExtResource("1_u52cg")
 name = "Mr. Hahnel"
-specialty = ExtResource("3_edsqm")
 assignments = Array[ExtResource("1_edsqm")]([SubResource("Resource_paaun"), SubResource("Resource_edsqm"), SubResource("Resource_hmm0t"), SubResource("Resource_nq7so"), SubResource("Resource_b14c3")])
 metadata/_custom_type_script = "uid://dw5suxgavsn1y"

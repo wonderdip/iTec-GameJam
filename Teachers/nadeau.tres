@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="TeacherData" load_steps=8 format=3 uid="uid://c2tmns4f32yxv"]
+[gd_resource type="Resource" script_class="TeacherData" load_steps=9 format=3 uid="uid://c2tmns4f32yxv"]
 
 [ext_resource type="Script" uid="uid://dw5suxgavsn1y" path="res://Scripts/teacher_data.gd" id="1_h2is8"]
 [ext_resource type="Script" uid="uid://bvvmgegkc1ik6" path="res://Scripts/assignment_data.gd" id="1_i6orl"]
+[ext_resource type="Resource" uid="uid://c2rn0inmwdp0j" path="res://Apps/photoshop.tres" id="3_civwu"]
 [ext_resource type="Resource" uid="uid://cecukkswaxkge" path="res://Apps/vscode.tres" id="3_i6orl"]
 
 [sub_resource type="Resource" id="Resource_civwu"]
 script = ExtResource("1_i6orl")
 assignment_title = "Addition function"
 assignment_details = "Fix this code to add numbers instead of multiplying them"
+app = ExtResource("3_i6orl")
 file_name = "addition.gd"
 starter_code = "func add(a, b):
 	return a * b"
@@ -20,6 +22,7 @@ metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 script = ExtResource("1_i6orl")
 assignment_title = "Variable types"
 assignment_details = "Fix the variable types"
+app = ExtResource("3_i6orl")
 file_name = "variables.gd"
 starter_code = "var number: bool = 1
 var name: int = \"Big Nadeau\"
@@ -34,6 +37,7 @@ metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 script = ExtResource("1_i6orl")
 assignment_title = "Game Jam"
 assignment_details = "Create a GOOD game, with 4K graphics and WASD controls"
+app = ExtResource("3_i6orl")
 file_name = "gamejam.gd"
 starter_code = "func _ready():
 	game =
@@ -51,11 +55,14 @@ metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 
 [sub_resource type="Resource" id="Resource_8rn3h"]
 script = ExtResource("1_i6orl")
+assignment_title = "Game Thumbnail"
+assignment_details = "Create a thumbnail for your game"
+app = ExtResource("3_civwu")
+min_coverage = 0.3
 metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 
 [resource]
 script = ExtResource("1_h2is8")
 name = "Mr. Nadeau"
-specialty = ExtResource("3_i6orl")
 assignments = Array[ExtResource("1_i6orl")]([SubResource("Resource_civwu"), SubResource("Resource_i6orl"), SubResource("Resource_2b3ps"), SubResource("Resource_8rn3h")])
 metadata/_custom_type_script = "uid://dw5suxgavsn1y"

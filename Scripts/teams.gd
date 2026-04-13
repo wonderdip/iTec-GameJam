@@ -30,10 +30,6 @@ func _on_day_changed(_day: int) -> void:
 	_spawn_assignment(2)
 
 func _on_week_changed(_week: int) -> void:
-	# Clear handed in list visually for new week
-	for child in handed_in_buttons.get_children():
-		child.queue_free()
-	# Spawn fresh assignments for the new week
 	_spawn_assignment(2)
 
 func _spawn_assignment(amount: int = 1) -> void:
@@ -76,29 +72,28 @@ func _on_back_button_pressed() -> void:
 	current_assignment = null
 
 func _on_new_button_pressed() -> void:
-	var existing_id = current_teacher.specialty.app_name + "::" + current_assignment.assignment_title
+	var existing_id = current_assignment.app.app_name + "::" + current_assignment.assignment_title
 	if Global.apps.has(existing_id):
 		Global.apps[existing_id].save_work_to_assignment()
 	
 	var app = Global.open_app_for_assignment(
-		current_teacher.specialty, 
-		get_parent().desktop, 
+		current_assignment.app,
+		get_parent().desktop,
 		current_assignment
 	)
 	app.current_assignment = current_assignment
 	
 	if not current_assignment.has_work:
 		app.reset_app()
-		# Load starter code for fresh VSCode assignments
 		if app.code_edit and current_assignment.starter_code != "":
 			app.code_edit.text = current_assignment.starter_code
 			app.file_name.text = current_assignment.file_name
 			
 	current_assignment.has_work = true
 	new_button.disabled = true
-	
+
 func _on_turn_in_button_pressed() -> void:
-	var app_id = current_teacher.specialty.app_name + "::" + current_assignment.assignment_title
+	var app_id = current_assignment.app.app_name + "::" + current_assignment.assignment_title
 	var grade := 0.0
 	
 	if Global.apps.has(app_id):
@@ -110,7 +105,6 @@ func _on_turn_in_button_pressed() -> void:
 			var coverage = app.get_canvas_coverage()
 			grade = clamp(coverage / current_assignment.min_coverage * 100.0, 0.0, 100.0)
 		elif current_assignment.check_lines.size() > 0:
-			# Grade based on how many required lines are present
 			var code = app.get_code()
 			var correct := 0
 			for required_line in current_assignment.check_lines:
@@ -130,7 +124,7 @@ func _on_turn_in_button_pressed() -> void:
 
 func _on_work_button_pressed() -> void:
 	var app = Global.open_app_for_assignment(
-		current_teacher.specialty,
+		current_assignment.app,
 		get_parent().desktop,
 		current_assignment
 	)

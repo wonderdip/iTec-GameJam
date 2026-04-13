@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dqenx3ahqvyhy" path="res://Scripts/application.gd" id="1_ifkci"]
 [ext_resource type="Theme" uid="uid://bgvcpnl7jyrfv" path="res://default.tres" id="2_yt6yk"]
 [ext_resource type="Texture2D" uid="uid://yw583u5x278l" path="res://Assets/WhiteWindow.png" id="3_6chpt"]
-[ext_resource type="FontFile" uid="uid://cfoorayyo12e" path="res://fonts/6px-Normal.ttf" id="3_yt6yk"]
+[ext_resource type="FontFile" uid="uid://cksshi54c44ta" path="res://fonts/MP16REG.ttf" id="4_6chpt"]
 [ext_resource type="PackedScene" uid="uid://dx4f5oy7b7uld" path="res://Scenes/window_dragger.tscn" id="4_qhp6n"]
 [ext_resource type="PackedScene" uid="uid://c4oy47oc4klsf" path="res://Scenes/titlebar_buttons.tscn" id="5_6chpt"]
 
@@ -54,7 +54,7 @@ size_flags_vertical = 3
 theme_override_colors/caret_color = Color(0.25929335, 0.25929394, 0.25929347, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_placeholder_color = Color(0.11489654, 0.114896916, 0.11489666, 0.6)
-theme_override_fonts/font = ExtResource("3_yt6yk")
+theme_override_fonts/font = ExtResource("4_6chpt")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_pq25i")
 placeholder_text = "Start..."

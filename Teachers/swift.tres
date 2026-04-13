@@ -8,6 +8,7 @@
 script = ExtResource("1_x4e83")
 assignment_title = "Smiley Face"
 assignment_details = "draw a smiley face"
+app = ExtResource("2_r5xac")
 min_coverage = 0.2
 metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 
@@ -15,12 +16,12 @@ metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 script = ExtResource("1_x4e83")
 assignment_title = "House"
 assignment_details = "Draw a house"
+app = ExtResource("2_r5xac")
 min_coverage = 0.4
 metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 
 [resource]
 script = ExtResource("1_32xp4")
 name = "Mr. Swift"
-specialty = ExtResource("2_r5xac")
 assignments = Array[ExtResource("1_x4e83")]([SubResource("Resource_7ttjy"), SubResource("Resource_x4e83")])
 metadata/_custom_type_script = "uid://dw5suxgavsn1y"
