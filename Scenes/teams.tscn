@@ -137,6 +137,7 @@ text = "Title"
 [node name="Details" type="Label" parent="Panel/AssignmentDetails/VBoxContainer"]
 custom_minimum_size = Vector2(94, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("10_a50o7")
 theme_override_font_sizes/font_size = 8
 text = "Details"
 autowrap_mode = 3

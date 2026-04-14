@@ -23,6 +23,7 @@ Global="*res://Scenes/global.tscn"
 
 window/size/viewport_width=256
 window/size/viewport_height=144
+window/size/mode=3
 window/size/window_width_override=1024
 window/size/window_height_override=576
 window/stretch/mode="canvas_items"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TeacherData" load_steps=6 format=3 uid="uid://ehds0evghsg5"]
+[gd_resource type="Resource" script_class="TeacherData" load_steps=11 format=3 uid="uid://ehds0evghsg5"]
 
 [ext_resource type="Script" uid="uid://dw5suxgavsn1y" path="res://Scripts/teacher_data.gd" id="1_32xp4"]
 [ext_resource type="Script" uid="uid://bvvmgegkc1ik6" path="res://Scripts/assignment_data.gd" id="1_x4e83"]
@@ -9,7 +9,7 @@ script = ExtResource("1_x4e83")
 assignment_title = "Smiley Face"
 assignment_details = "draw a smiley face"
 app = ExtResource("2_r5xac")
-min_coverage = 0.2
+min_coverage = 0.1
 metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 
 [sub_resource type="Resource" id="Resource_x4e83"]
@@ -17,11 +17,51 @@ script = ExtResource("1_x4e83")
 assignment_title = "House"
 assignment_details = "Draw a house"
 app = ExtResource("2_r5xac")
-min_coverage = 0.4
+min_coverage = 0.25
+metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
+
+[sub_resource type="Resource" id="Resource_dhjk2"]
+script = ExtResource("1_x4e83")
+assignment_title = "HearthStone"
+assignment_details = "Draw a character for a hearth stone card"
+app = ExtResource("2_r5xac")
+min_coverage = 0.1
+metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
+
+[sub_resource type="Resource" id="Resource_hee0l"]
+script = ExtResource("1_x4e83")
+assignment_title = "Name"
+assignment_details = "Draw your name with your own font"
+app = ExtResource("2_r5xac")
+min_coverage = 0.15
+metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
+
+[sub_resource type="Resource" id="Resource_dophr"]
+script = ExtResource("1_x4e83")
+assignment_title = "Superhero"
+assignment_details = "Create a superhero"
+app = ExtResource("2_r5xac")
+min_coverage = 0.3
+metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
+
+[sub_resource type="Resource" id="Resource_jjmig"]
+script = ExtResource("1_x4e83")
+assignment_title = "Self Portrait"
+assignment_details = "Draw a self portrait"
+app = ExtResource("2_r5xac")
+min_coverage = 0.15
+metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
+
+[sub_resource type="Resource" id="Resource_2r5ng"]
+script = ExtResource("1_x4e83")
+assignment_title = "Sword Drawing"
+assignment_details = "Draw a cool sword"
+app = ExtResource("2_r5xac")
+min_coverage = 0.1
 metadata/_custom_type_script = "uid://bvvmgegkc1ik6"
 
 [resource]
 script = ExtResource("1_32xp4")
 name = "Mr. Swift"
-assignments = Array[ExtResource("1_x4e83")]([SubResource("Resource_7ttjy"), SubResource("Resource_x4e83")])
+assignments = Array[ExtResource("1_x4e83")]([SubResource("Resource_7ttjy"), SubResource("Resource_x4e83"), SubResource("Resource_dhjk2"), SubResource("Resource_hee0l"), SubResource("Resource_dophr"), SubResource("Resource_jjmig"), SubResource("Resource_2r5ng")])
 metadata/_custom_type_script = "uid://dw5suxgavsn1y"

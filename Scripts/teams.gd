@@ -138,13 +138,4 @@ func _on_upcoming_list_pressed() -> void:
 func _on_handed_in_list_pressed() -> void:
 	handed_in_scroller.show()
 	upcoming_scroller.hide()
-
-func _process(_delta: float) -> void:
-	if not current_assignment:
-		return
-	
-	var already_graded = current_assignment.grade > 0
-	
-	turn_in_button.disabled = already_graded or not current_assignment.has_work
-	new_button.disabled = already_graded or current_assignment.has_work
 		

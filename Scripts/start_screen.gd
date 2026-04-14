@@ -9,9 +9,12 @@ extends Control
 
 @export var intro_texts: Array[String] = [
 	"Welcome to the iTek Simulator!",
-	"Every DAY you'll get new assignments that you have to hand in to get graded.",
+	"This is a Desktop/UI sim game where you will play through the life of a iTek Student struggling to hand work",
+	"Every DAY (25sec) you'll get new assignments that you have to hand in to get graded.",
+	"Many of these assignments are inspired by real ones so this is good practice",
 	"Every WEEK the minimum average you need, will go up by 10%.",
-	"Fail to keep up with the average and you'll be put on probation.",
+	"Use teams and the other apps to create work and hand it in",
+	"Fail to keep up with the average and you'll get a scary email from Mr.Broad.",
 	"Good luck and Do NOT fail!"
 ]
 @export var letter_delay: float = 0.04
